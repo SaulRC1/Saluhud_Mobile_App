@@ -1,3 +1,13 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["saluhud/components/*"],
+      "@styles/*": ["saluhud/styles/*"],
+      "@screens/*": ["saluhud/screens/*"],
+      "@resources/*": ["saluhud/resources/*"],
+    }
+  },
+  "include": ["./"]
 }
