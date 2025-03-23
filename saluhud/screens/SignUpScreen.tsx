@@ -39,7 +39,7 @@ export default function SignUpScreen()
         try
         {
             const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 5000);
+            const timeout = setTimeout(() => controller.abort(), 60000);
 
             const response = await fetch("http://" + SaluhudMobileAppConfiguration.backendURL + SaluhudMobileAppConfiguration.userRegistrationEndpoint, {
                 method: "POST",
