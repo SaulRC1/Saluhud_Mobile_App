@@ -2,11 +2,15 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
       "@components/*": ["saluhud/components/*"],
       "@styles/*": ["saluhud/styles/*"],
       "@screens/*": ["saluhud/screens/*"],
       "@resources/*": ["saluhud/resources/*"],
+      "@src/*": ["saluhud/src/*"],
+      "@root/*": ["*"]
     }
   },
   "include": ["./"]

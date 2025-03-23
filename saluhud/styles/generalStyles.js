@@ -28,5 +28,10 @@ export const generalStyles = StyleSheet.create ({
     paddingHorizontal: 32,
     borderRadius: 4,
     backgroundColor: "#8f0c2e"
+  },
+
+  standardButtonDisabled:
+  {
+    backgroundColor: "#DCDCDC"
   }
 });

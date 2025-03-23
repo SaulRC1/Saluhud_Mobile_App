@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Dimensions, FlatList, Image, ImageSourcePropType, LayoutChangeEvent, StyleSheet, Text, TextInput, TextStyle, View, ViewStyle } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { useTranslation } from "react-i18next";
-import "../../../i18n.config";
+import "@root/i18n.config";
 import FormTextInput, { FormTextInputValidationResult } from './FormTextInput';
+import i18next from '@root/i18n.config';
 
 interface PhoneNumberInputProps 
 {
@@ -16,6 +17,11 @@ interface PhoneNumberInputProps
     phoneInputStyle?: TextStyle;
     placeholder?: string;
     dropdownStyle?: ViewStyle;
+    value: string;
+    setValue: (text: string) => void;
+    validateFunction: (text: string) => FormTextInputValidationResult;
+    countryPrefix: string;
+    setCountryPrefix: (prefix: string) => void;
 }
 
 interface Size
@@ -24,7 +30,8 @@ interface Size
     height: number;
 }
 
-export default function PhoneNumberInput({labelIcon, label, mainViewStyle, labelViewStyle, labelTextStyle, phoneInputViewStyle, phoneInputStyle, placeholder, dropdownStyle} : Readonly<PhoneNumberInputProps>)
+export default function PhoneNumberInput({labelIcon, label, mainViewStyle, labelViewStyle, labelTextStyle, 
+    phoneInputViewStyle, phoneInputStyle, placeholder, dropdownStyle, value, setValue, validateFunction, countryPrefix, setCountryPrefix} : Readonly<PhoneNumberInputProps>)
 {
     const { t } = useTranslation();
 
@@ -282,7 +289,7 @@ export default function PhoneNumberInput({labelIcon, label, mainViewStyle, label
         );
     };
 
-    const [selectedCountryPrefix, setSelectedCountryPrefix] = useState("+34");
+    //const [selectedCountryPrefix, setSelectedCountryPrefix] = useState("+34");
 
     function obtainSelectedCountryPrefixFlag(selectedCountryPrefix: string)
     {
@@ -296,7 +303,7 @@ export default function PhoneNumberInput({labelIcon, label, mainViewStyle, label
 
     const renderLeftIcon = () => {
         return (
-            <Image source={obtainSelectedCountryPrefixFlag(selectedCountryPrefix)} style={{height: "100%", width: "30%", marginRight: 5}} resizeMode="contain"/>
+            <Image source={obtainSelectedCountryPrefixFlag(countryPrefix)} style={{height: "100%", width: "30%", marginRight: 5}} resizeMode="contain"/>
         );
     }
 
@@ -324,28 +331,7 @@ export default function PhoneNumberInput({labelIcon, label, mainViewStyle, label
             setValidityImageSource(require("@resources/icons/form_input_error.png"));
             setIsVisibleErrorMessage(true);
             setErrorMessage(dataValidation.errorMessage);
-            /*setFormTextInputSize({
-                width: formTextInputSize.width,
-                height: formTextInputSize.height + 25//errorMessageSize.height
-            });*/
         }
-    }
-
-    function phoneNumberStandardValidationFunction(text: string) : FormTextInputValidationResult
-    {
-        if (text === undefined || text.trim().length <= 0) 
-        {
-            const validationResult: FormTextInputValidationResult = 
-            {
-                validationResult: false,
-                errorMessage: "Debe de ingresar un número de telefono"
-            };
-
-            return validationResult;
-        }
-
-        const validationResult : FormTextInputValidationResult = {validationResult: true, errorMessage: ""};
-        return validationResult;
     }
 
     const [phoneNumberInputSize, setPhoneNumberInputSize] = useState<Size>({ width: 0, height: 0 });
@@ -393,14 +379,14 @@ export default function PhoneNumberInput({labelIcon, label, mainViewStyle, label
             </View>
 
             <View style={[phoneNumberInputDefaultStyles.phoneInputView, phoneInputViewStyle]}>
-                <Dropdown data={internationalCountryCallingCodes} labelField={"value"} valueField={"value"} onChange={item => setSelectedCountryPrefix(item.value)}
+                <Dropdown data={internationalCountryCallingCodes} labelField={"value"} valueField={"value"} onChange={item => setCountryPrefix(item.value)}
                     style={[phoneNumberInputDefaultStyles.dropdown, dropdownStyle]}
-                    mode="modal" value={selectedCountryPrefix} placeholder='+34' containerStyle={[phoneNumberInputDefaultStyles.dropdownContainer]} search
+                    mode="modal" value={countryPrefix} placeholder='+34' containerStyle={[phoneNumberInputDefaultStyles.dropdownContainer]} search
                     searchPlaceholder={t("PHONE_NUMBER_DROPDOWN_SEARCH_PLACEHOLDER")} renderItem={renderItem}
                     flatListProps={{ initialNumToRender: 10, maxToRenderPerBatch: 20, windowSize: 10 }} renderLeftIcon={renderLeftIcon}
                     selectedTextStyle={{textAlign: 'center'}}></Dropdown>
                 <TextInput style={[phoneNumberInputDefaultStyles.phoneInput, phoneInputStyle]} placeholder={placeholder ?? ""} 
-                onChangeText={(text) => executeValidateFunction(text, phoneNumberStandardValidationFunction)}></TextInput>
+                value={value} onChangeText={(text) => {setValue(text); executeValidateFunction(text, validateFunction);}}></TextInput>
                 <Image source={validityImageSource} style={[phoneNumberInputDefaultStyles.textInputValidityImageStyle, { display: isVisibleValidityImage ? 'flex' : 'none' }]} resizeMode="contain"></Image>
             </View>
             <View style={{ display: isVisibleErrorMessage ? 'flex' : 'none', /*backgroundColor: "black"*/ }} onLayout={errorMessageOnLayoutEventFunction}>

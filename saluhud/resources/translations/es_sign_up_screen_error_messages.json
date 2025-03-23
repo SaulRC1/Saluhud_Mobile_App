@@ -1,0 +1,23 @@
+{
+    "EMPTY_FIRST_NAME_ERROR_MESSAGE": "Debe de ingresar un nombre.",
+    "TOO_LONG_FIRST_NAME_ERROR_MESSAGE": "El nombre es demasiado largo.",
+    "NOT_VALID_FIRST_NAME_ERROR_MESSAGE": "El nombre introducido no es válido. No debe contener números ni caracteres especiales (./-_*? etc).",
+    "TOO_LONG_LAST_NAME_ERROR_MESSAGE": "El apellido es demasiado largo.",
+    "NOT_VALID_LAST_NAME_ERROR_MESSAGE": "El apellido introducido no es válido. No debe contener números ni caracteres especiales (./-_*? etc).",
+    "EMPTY_USERNAME_ERROR_MESSAGE": "Debe de ingresar un nombre de usuario.",
+    "TOO_LONG_USERNAME_ERROR_MESSAGE": "El nombre de usuario es demasiado largo, no debe superar los 32 caracteres.",
+    "TOO_SHORT_USERNAME_ERROR_MESSAGE": "El nombre de usuario es demasiado corto, debe contener 2 o más caracteres.",
+    "NOT_VALID_USERNAME_ERROR_MESSAGE": "El nombre de usuario introducido no es válido.",
+    "EMPTY_PASSWORD_ERROR_MESSAGE": "Debe de ingresar una contraseña.",
+    "TOO_LONG_PASSWORD_ERROR_MESSAGE": "La contraseña es demasiado larga.",
+    "NOT_VALID_PASSWORD_ERROR_MESSAGE": "La contraseña introducida no es válida. Debe contener al menos 1 mayúscula, 1 minúscula, 1 número, 1 carácter especial de entre los siguientes (#?!@$%^&*-_) y tener al menos 8 caracteres de longitud",
+    "EMPTY_EMAIL_ERROR_MESSAGE": "Debe de ingresar un correo electrónico.",
+    "TOO_LONG_EMAIL_ERROR_MESSAGE": "El correo electrónico es demasiado largo.",
+    "NOT_VALID_EMAIL_ERROR_MESSAGE": "El correo electrónico introducido no es válido.",
+    "TOO_LONG_PHONE_NUMBER_ERROR_MESSAGE": "El número de teléfono es demasiado largo, no debe superar los 32 dígitos.",
+    "NOT_VALID_PHONE_NUMBER_ERROR_MESSAGE": "El teléfono introducido no es válido. Debe tener al menos 4 dígitos, con un máximo de 32, y no debe contener caracteres ni espacios.",
+    "CONFIRMATION_PASSWORD_DIFFERENT_FROM_PASSWORD": "La contraseña no coincide con la anteriormente especificada.",
+    "USER_REGISTRATION_LOADING_DIALOG_MESSAGE": "Registrando usuario. Por favor, espere...",
+    "USER_REGISTRATION_UNKNOW_ERROR": "Ha ocurrido un error desconocido, por favor intentalo de nuevo.",
+    "USER_REGISTRATION_NETWORK_TIMEOUT_ERROR": "Ha ocurrido un error de red, por favor compruebe su conexión a internet e inténtelo de nuevo."
+}

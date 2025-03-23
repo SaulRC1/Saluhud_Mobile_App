@@ -28,6 +28,8 @@ interface FormTextInputProps
   secureTextEntry?: boolean;
   validateFunction: (text: string) => FormTextInputValidationResult;
   mandatory: boolean;
+  value: string;
+  setValue: (text: string) => void;
 }
 
 interface Size
@@ -37,7 +39,7 @@ interface Size
 }
 
 export default function FormTextInput({labelText, placeholder, labelStyle, textInputStyle, 
-    formTextInputContainerStyle, autoCapitalize, labelIcon, labelIconStyle, secureTextEntry, validateFunction, mandatory} : Readonly<FormTextInputProps>) 
+    formTextInputContainerStyle, autoCapitalize, labelIcon, labelIconStyle, secureTextEntry, validateFunction, mandatory, value, setValue} : Readonly<FormTextInputProps>) 
 {
     const [validityImageSource, setValidityImageSource] = useState(require("@resources/icons/form_input_error.png"));
 
@@ -51,7 +53,7 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
             console.log("Correcto");
             setValidityImageSource(require("@resources/icons/form_input_accepted.png"));
             setIsVisibleErrorMessage(false);
-            setErrorMessageSize({width: 0, height: 0});
+            //setErrorMessageSize({width: 0, height: 0});
         }
         else 
         {
@@ -64,6 +66,9 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
                 height: formTextInputSize.height + 25//errorMessageSize.height
             });*/
         }
+
+        //Trigger recalculation of the error message size
+        setErrorMessageSize({width: 0, height: 0});
     }
 
     const [isVisibleErrorMessage, setIsVisibleErrorMessage] = useState(false);
@@ -71,6 +76,8 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
 
     const [formTextInputSize, setFormTextInputSize] = useState<Size>({ width: 0, height: 0 });
     const formTextInputDynamicSize = isVisibleErrorMessage? {width: formTextInputSize.width, height: formTextInputSize.height} : {};
+    
+    const [formTextInputInitialSize, setFormTextInputInitialSize] = useState<Size>({ width: 0, height: 0 });
 
     function formTextInputOnLayoutEventFunction(event: LayoutChangeEvent)
     {
@@ -82,6 +89,16 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
             width: width,
             height: height
         });
+
+        if(formTextInputInitialSize.width === 0 && formTextInputInitialSize.height === 0)
+        {
+            //Set initial size of the FormTextInput component only the first time it is rendered
+            setFormTextInputInitialSize({width: width, height: height});
+
+            console.log("Ancho Inicial FormTextInput: " + formTextInputInitialSize.width + ", Alto Inicial FormTextInput: " + formTextInputInitialSize.height);
+        }
+
+        console.log("Ancho FormTextInput: " + formTextInputSize.width + ", Alto FormTextInput: " + formTextInputSize.height);
     }
 
     const [errorMessageSize, setErrorMessageSize] = useState<Size>({width: 0, height: 0});
@@ -100,8 +117,8 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
             });
 
             setFormTextInputSize({
-                width: formTextInputSize.width,
-                height: formTextInputSize.height + height
+                width: formTextInputInitialSize.width,
+                height: formTextInputInitialSize.height + height
             });
         }
     }
@@ -119,7 +136,7 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
 
                 <View style={formTextInputStandardStyles.textInputContainerStyle}>
                     <TextInput style={[formTextInputStandardStyles.textInputStyle, textInputStyle]} placeholder={placeholder} autoCapitalize={autoCapitalize}
-                    secureTextEntry={secureTextEntry} onChangeText={(text) => executeValidateFunction(text, validateFunction)} 
+                    secureTextEntry={secureTextEntry} value = {value} onChangeText={(text) => {setValue(text); executeValidateFunction(text, validateFunction);}} 
                     /*onPressIn={() => {setIsVisibleValidityImage(true); executeValidateFunction("", validateFunction)}}*/></TextInput>
                     <Image source={validityImageSource} style={[formTextInputStandardStyles.textInputValidityImageStyle, { display: isVisibleValidityImage ? 'flex' : 'none' }]} resizeMode="contain"></Image>
                 </View>
@@ -134,7 +151,7 @@ export default function FormTextInput({labelText, placeholder, labelStyle, textI
             <Text style={[formTextInputStandardStyles.textStyle, labelStyle]}>{mandatory? labelText + " *" : labelText}</Text>
             <View style={formTextInputStandardStyles.textInputContainerStyle}>
                 <TextInput style={[formTextInputStandardStyles.textInputStyle, textInputStyle]} placeholder={placeholder} autoCapitalize={autoCapitalize}
-                    secureTextEntry={secureTextEntry} onChangeText={(text) => executeValidateFunction(text, validateFunction)}
+                    secureTextEntry={secureTextEntry} value = {value} onChangeText={(text) => {setValue(text); executeValidateFunction(text, validateFunction);}}
                     /*onPressIn={() => {setIsVisibleValidityImage(true); executeValidateFunction("", validateFunction)}}*/></TextInput>
                 <Image source={validityImageSource} style={[formTextInputStandardStyles.textInputValidityImageStyle, { display: isVisibleValidityImage ? 'flex' : 'none' }]} resizeMode="contain"></Image>
             </View>

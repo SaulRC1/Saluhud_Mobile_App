@@ -1,0 +1,23 @@
+{
+    "EMPTY_FIRST_NAME_ERROR_MESSAGE": "First name must not be empty.",
+    "TOO_LONG_FIRST_NAME_ERROR_MESSAGE": "First name is too long.",
+    "NOT_VALID_FIRST_NAME_ERROR_MESSAGE": "The first name introduced is not valid. It must not contain numbers nor special characters (./-_*? etc).",
+    "TOO_LONG_LAST_NAME_ERROR_MESSAGE": "Last name is too long.",
+    "NOT_VALID_LAST_NAME_ERROR_MESSAGE": "The last name introduced is not valid. It must not contain numbers nor special characters (./-_*? etc).",
+    "EMPTY_USERNAME_ERROR_MESSAGE": "Username must not be empty.",
+    "TOO_LONG_USERNAME_ERROR_MESSAGE": "Username is too long, it must not exceed 32 characters.",
+    "TOO_SHORT_USERNAME_ERROR_MESSAGE": "Username is too short, it must contain 2 or more characters.",
+    "NOT_VALID_USERNAME_ERROR_MESSAGE": "The username introduced is not valid.",
+    "EMPTY_PASSWORD_ERROR_MESSAGE": "Password must not be empty.",
+    "TOO_LONG_PASSWORD_ERROR_MESSAGE": "Password is too long.",
+    "NOT_VALID_PASSWORD_ERROR_MESSAGE": "The password introduced is not valid. It must contain 1 upper case letter, 1 lower case letter, 1 number, 1 special character of the following (#?!@$%^&*-_) and at least be 8 characters long.",
+    "EMPTY_EMAIL_ERROR_MESSAGE": "Email must not be empty.",
+    "TOO_LONG_EMAIL_ERROR_MESSAGE": "Email is too long.",
+    "NOT_VALID_EMAIL_ERROR_MESSAGE": "The email introduced is not valid.",
+    "TOO_LONG_PHONE_NUMBER_ERROR_MESSAGE": "The phone number is too long, it must not exceed 32 digits.",
+    "NOT_VALID_PHONE_NUMBER_ERROR_MESSAGE": "Phone number is not valid, it must be at least 4 digits long with a maximum of 32, and not contain letters nor whitespaces.",
+    "CONFIRMATION_PASSWORD_DIFFERENT_FROM_PASSWORD": "Password confirmation does not match the password previously specified.",
+    "USER_REGISTRATION_LOADING_DIALOG_MESSAGE": "Registering user. Please wait...",
+    "USER_REGISTRATION_UNKNOW_ERROR": "An unknown error has occurred, please try again.",
+    "USER_REGISTRATION_NETWORK_TIMEOUT_ERROR": "A network error has occurred, please check your internet connection status and try again."
+}

@@ -23,7 +23,9 @@ module.exports = {
           "@components": "./saluhud/components",
           "@styles": "./saluhud/styles",
           "@screens": "./saluhud/screens",
-          "@resources": "./saluhud/resources"
+          "@resources": "./saluhud/resources",
+          "@src": "./saluhud/src",
+          "@root": "./"
         }
       }
     ]
