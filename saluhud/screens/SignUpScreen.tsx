@@ -16,11 +16,17 @@ import InformationModal, { InformationModalVariant } from "@components/modal/Inf
 import ApiErrorResponse from "@src/response/ApiErrorResponse";
 import ApiErrorException from "@src/exception/ApiErrorException";
 import ApiInformationResponse from "@src/response/ApiInformationResponse";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { RootTabParamList } from "@root/App";
+import { useNavigation } from "@react-navigation/native";
 
 let saluhudUserValidator = new SaluhudUserValidator();
 
+type SignUpScreenNavigationProp = BottomTabNavigationProp<RootTabParamList, "Sign_Up_Screen">;
+
 export default function SignUpScreen()
 {
+    const navigation = useNavigation<SignUpScreenNavigationProp>();
     const { t } = useTranslation();
 
     const [loadingModalVisible, setLoadingModalVisible] = useState(false);
@@ -226,7 +232,7 @@ export default function SignUpScreen()
 
                 <StandardButton title={t("SIGN_UP_SCREEN_SIGN_UP_BUTTON_TITLE")} onPress={() => {onPressRegisterButton(saluhudUser)}} style={signUpScreenStyle.buttonStyle} disabled={registerButtonDisabled}></StandardButton>
 
-                <StandardButton title={t("SIGN_UP_SCREEN_GO_BACK_BUTTON_TITLE")} onPress={() => { }}></StandardButton>
+                <StandardButton title={t("SIGN_UP_SCREEN_GO_BACK_BUTTON_TITLE")} onPress={() => {navigation.navigate("Log_In_Screen")}}></StandardButton>
 
             </ScrollView>
 

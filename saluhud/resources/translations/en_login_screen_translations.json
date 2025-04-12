@@ -1,0 +1,12 @@
+{
+    "USERNAME_TEXT_FIELD_LABEL": "Username",
+    "PASSWORD_FIELD_LABEL": "Password",
+    "USERNAME_TEXT_FIELD_PLACEHOLDER": "Please insert your username",
+    "PASSWORD_FIELD_PLACEHOLDER": "Please insert your password",
+    "LOGIN_BUTTON_TEXT": "Log in",
+    "NO_ACCOUNT_SUGGESTION_TEXT": "Don't have an account?",
+    "SIGN_UP_TEXT": "Sign up",
+    "LOADING_MODAL_LOGIN_IN_MESSAGE": "Login you in, please wait...",
+    "USER_AUTHENTICATION_UNKNOW_ERROR": "An unknown error has occurred, please try again.",
+    "USER_AUTHENTICATION_NETWORK_TIMEOUT_ERROR": "A network error has occurred, please check your internet connection status and try again."
+}

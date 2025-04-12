@@ -1,0 +1,12 @@
+{
+    "USERNAME_TEXT_FIELD_LABEL": "Usuario",
+    "PASSWORD_FIELD_LABEL": "Contraseña",
+    "USERNAME_TEXT_FIELD_PLACEHOLDER": "Por favor, introduce tu usuario",
+    "PASSWORD_FIELD_PLACEHOLDER": "Por favor, introduce tu contraseña",
+    "LOGIN_BUTTON_TEXT": "Iniciar sesión",
+    "NO_ACCOUNT_SUGGESTION_TEXT": "¿No tienes una cuenta?",
+    "SIGN_UP_TEXT": "Registrate",
+    "LOADING_MODAL_LOGIN_IN_MESSAGE": "Iniciando sesión...",
+    "USER_AUTHENTICATION_UNKNOW_ERROR": "Ha ocurrido un error desconocido, por favor intentalo de nuevo.",
+    "USER_AUTHENTICATION_NETWORK_TIMEOUT_ERROR": "Ha ocurrido un error de red, por favor compruebe su conexión a internet e inténtelo de nuevo."
+}
