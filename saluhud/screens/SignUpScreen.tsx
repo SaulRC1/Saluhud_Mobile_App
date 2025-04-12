@@ -52,7 +52,8 @@ export default function SignUpScreen()
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Accept-Language": i18next.language
+                    "Accept-Language": i18next.language,
+                    "X-API-KEY": SaluhudMobileAppConfiguration.apiKey
                 },
                 body: JSON.stringify(saluhudUserRegistrationDTO),
                 signal: controller.signal
