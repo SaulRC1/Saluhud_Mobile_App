@@ -259,5 +259,20 @@
     "SIGN_UP_SCREEN_TITLE": "Sign up form",
     "SIGN_UP_SCREEN_SIGN_UP_BUTTON_TITLE": "Sign up",
     "SIGN_UP_SCREEN_GO_BACK_BUTTON_TITLE": "Go back",
-    "ACCEPT_BUTTON_TEXT": "Accept"
+    "ACCEPT_BUTTON_TEXT": "Accept",
+    "RECIPES_SCREEN_TITLE": "Recipes",
+    "ALLERGENIC_1": "Gluten",
+    "ALLERGENIC_2": "Crustacean",
+    "ALLERGENIC_3": "Egg",
+    "ALLERGENIC_4": "Fish",
+    "ALLERGENIC_5": "Peanut",
+    "ALLERGENIC_6": "Soya bean",
+    "ALLERGENIC_7": "Celery",
+    "ALLERGENIC_8": "Mustard",
+    "ALLERGENIC_9": "Sesame seed",
+    "ALLERGENIC_10": "Sulfur dioxide and sulphites",
+    "ALLERGENIC_11": "Lupin bean",
+    "ALLERGENIC_12": "Nuts",
+    "ALLERGENIC_13": "Mollusk",
+    "ALLERGENIC_14": "Lactose"
 }

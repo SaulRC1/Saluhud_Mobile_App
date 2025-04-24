@@ -259,5 +259,20 @@
     "SIGN_UP_SCREEN_TITLE": "Formulario de registro",
     "SIGN_UP_SCREEN_SIGN_UP_BUTTON_TITLE": "Registrarse",
     "SIGN_UP_SCREEN_GO_BACK_BUTTON_TITLE": "Volver",
-    "ACCEPT_BUTTON_TEXT": "Aceptar"
+    "ACCEPT_BUTTON_TEXT": "Aceptar",
+    "RECIPES_SCREEN_TITLE": "Recetas",
+    "ALLERGENIC_1": "Gluten",
+    "ALLERGENIC_2": "Crustáceos",
+    "ALLERGENIC_3": "Huevos",
+    "ALLERGENIC_4": "Pescado",
+    "ALLERGENIC_5": "Cacahuetes",
+    "ALLERGENIC_6": "Soja",
+    "ALLERGENIC_7": "Apio",
+    "ALLERGENIC_8": "Mostaza",
+    "ALLERGENIC_9": "Sésamo",
+    "ALLERGENIC_10": "Sulfitos",
+    "ALLERGENIC_11": "Altramuces",
+    "ALLERGENIC_12": "Frutos con cáscara",
+    "ALLERGENIC_13": "Moluscos",
+    "ALLERGENIC_14": "Lácteos"
 }

@@ -107,6 +107,7 @@ export default function LogInScreen()
             setLoadingModalVisible(false);
 
             saluhudMobileAppAuthenticationContext.jwt = responseJSON.jwt;
+            navigation.navigate("Home_Screen");
             
         } catch (error) {
             console.error(error);
@@ -135,7 +136,7 @@ export default function LogInScreen()
     }
     
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
 
             <LoadingModal visible={loadingModalVisible} message={t("LOADING_MODAL_LOGIN_IN_MESSAGE", { ns: "login_screen_translations" })}/>
             <InformationModal visible={informationModalVisible} message={informationModalMessage} acceptButtonText={t("ACCEPT_BUTTON_TEXT")} variant={informationModalVariant}
@@ -171,7 +172,7 @@ export default function LogInScreen()
 const logInScreenStyles = StyleSheet.create({
     mainView:
     {
-        flex: 1,
+        //flex: 1,
         //justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',

@@ -2,5 +2,6 @@
     "apiKey": "0965dc8c-fe6c-43fb-8907-d83cc2163a38",
     "backendURL": "192.168.1.59:9000",
     "userRegistrationEndpoint": "/saluhud-mobile-app/registration",
-    "userAuthenticationEndpoint": "/saluhud-mobile-app/login"
+    "userAuthenticationEndpoint": "/saluhud-mobile-app/login",
+    "recipeCardDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-card-data"
 }

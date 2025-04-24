@@ -4,3 +4,5 @@ export {default as en_sign_up_screen_error_messages} from "@resources/translatio
 export {default as es_sign_up_screen_error_messages} from "@resources/translations/es_sign_up_screen_error_messages.json";
 export {default as en_login_screen_translations} from "@resources/translations/en_login_screen_translations.json";
 export {default as es_login_screen_translations} from "@resources/translations/es_login_screen_translations.json";
+export {default as es_recipes_screen_translations} from "@resources/translations/es_recipes_screen_translations.json";
+export {default as en_recipes_screen_translations} from "@resources/translations/en_recipes_screen_translations.json";
