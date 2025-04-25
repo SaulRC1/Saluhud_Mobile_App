@@ -1,6 +1,6 @@
 import IconButton from "@components/buttons/IconButton";
 import StandardButton from "@components/buttons/StandardButton";
-import { Modal, StyleSheet, useWindowDimensions, View, Text, ScrollView, GestureResponderEvent, StyleProp, ViewStyle } from "react-native";
+import { Modal, StyleSheet, useWindowDimensions, View, Text, ScrollView, GestureResponderEvent, StyleProp, ViewStyle, NativeSyntheticEvent } from "react-native";
 
 interface ContainerModalProps
 {
@@ -9,14 +9,15 @@ interface ContainerModalProps
     style?: StyleProp<ViewStyle>
     renderContent: () => JSX.Element;
     renderFooter?: () => JSX.Element;
+    onRequestClose: (event: NativeSyntheticEvent<any>) => void
 }
 
-export default function ContainerModal({title, visible, style, renderContent, renderFooter} : Readonly<ContainerModalProps>)
+export default function ContainerModal({title, visible, style, renderContent, renderFooter, onRequestClose} : Readonly<ContainerModalProps>)
 {
     const {height, width} = useWindowDimensions();
     
     return (
-        <Modal animationType="fade" transparent={true} visible={visible}>
+        <Modal animationType="fade" transparent={true} visible={visible} onRequestClose={onRequestClose}>
             <View style={[containerModalStyles.centeredView]}>
                 <View style={[containerModalStyles.containerDialog, {maxWidth: width * 0.9, maxHeight: height * 0.9}, style]}>
                     <View style={containerModalStyles.header}>

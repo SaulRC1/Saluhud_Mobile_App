@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import RecipeCard from "@components/recipe/RecipeCard";
 import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, useWindowDimensions, View } from "react-native";
-import RecipeCardDTO from "@src/dto/RecipeCardDTO";
+import RecipeCardDTO from "@src/dto/nutrition/RecipeCardDTO";
 import SearchBar from "@components/filter/SearchBar";
 import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -14,7 +14,8 @@ import ContainerModal from "@components/modal/ContainerModal";
 import StandardButton from "@components/buttons/StandardButton";
 import NumericInput, { NumericInputType } from "@components/inputs/NumericInput";
 import { AdvancedCheckbox, CheckboxGroup } from "react-native-advanced-checkbox";
-import { AllergenicEnum } from "@src/entity/AllergenicEnum";
+import { AllergenicEnum, fromAllergenicId } from "@src/entity/AllergenicEnum";
+import RecipeCardAllergenicDTO from "@src/dto/nutrition/RecipeCardAllergenicDTO";
 
 type RecipesScreenNavigationProp = BottomTabNavigationProp<RootTabParamList, 'Recipes_Screen'>;
 
@@ -93,9 +94,25 @@ export default function RecipesScreen() {
         return (<ActivityIndicator size="large" style={{ margin: 20 }} color="#a80a2e" />);
     }
 
+    const mapRecipeCardAllergenicDTOToAllergenicEnum = (recipeAllergenics: RecipeCardAllergenicDTO[]) => {
+        let allergenicEnums: AllergenicEnum[] = [];
+
+        recipeAllergenics.forEach((recipeAllergenic) => {
+            let allergenicEnum = fromAllergenicId(recipeAllergenic.allergenicId);
+            
+            if(allergenicEnum !== undefined) {
+                allergenicEnums.push(allergenicEnum);
+                //console.log("Pushed allergenic: " + allergenicEnum);
+            }
+        });
+
+        return allergenicEnums;
+    }
+
     const renderRecipeCardItem = useCallback(({ item }: { item: RecipeCardDTO }) => (
     <RecipeCard id={item.recipeID} name={item.recipeName} kilocalories={item.recipeKcal}
-    style={recipeCardStyles.recipeCard} imageSource={item.recipeImageSource} />), []);
+    style={recipeCardStyles.recipeCard} imageSource={item.recipeImageSource} 
+    allergenics={mapRecipeCardAllergenicDTOToAllergenicEnum(item.recipeAllergenics)}/>), []);
 
     const FiltersModal = () => {
 
@@ -323,7 +340,8 @@ export default function RecipesScreen() {
         return(
             <ContainerModal title={t("FILTERS_MODAL_TITLE", {ns: "recipes_screen_translations"})} 
                 visible={filtersModalVisible} renderContent={renderFiltersModalContent}
-                renderFooter={renderFiltersModalFooter} style={{width: width * 0.9}}/>
+                renderFooter={renderFiltersModalFooter} style={{width: width * 0.9}} 
+                onRequestClose={(e) => setFiltersModalVisible(false)}/>
         );
     };
 
