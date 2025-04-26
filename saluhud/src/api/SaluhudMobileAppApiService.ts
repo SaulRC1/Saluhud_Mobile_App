@@ -10,7 +10,7 @@ const commonApiHttpRequestHeaders = {
   'X-API-KEY': SaluhudMobileAppConfiguration.apiKey,
 };
 
-export async function executeGetRequest(url: string) {
+export async function executeGetRequest(customHeaders: Map<string, string>, url: string) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 60000);
 
@@ -18,7 +18,7 @@ export async function executeGetRequest(url: string) {
     url,
     {
       method: 'GET',
-      headers: commonApiHttpRequestHeaders,
+      headers: {...commonApiHttpRequestHeaders, ...Object.fromEntries(customHeaders)},
       signal: controller.signal,
     },
   );

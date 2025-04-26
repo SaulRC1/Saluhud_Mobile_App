@@ -16,6 +16,7 @@ import NumericInput, { NumericInputType } from "@components/inputs/NumericInput"
 import { AdvancedCheckbox, CheckboxGroup } from "react-native-advanced-checkbox";
 import { AllergenicEnum, fromAllergenicId } from "@src/entity/AllergenicEnum";
 import RecipeCardAllergenicDTO from "@src/dto/nutrition/RecipeCardAllergenicDTO";
+import { useSaluhudMobileAppAuthenticationContext } from "@src/global/SaluhudMobileAppContext";
 
 type RecipesScreenNavigationProp = BottomTabNavigationProp<RootTabParamList, 'Recipes_Screen'>;
 
@@ -30,6 +31,8 @@ function stringToBoolean(value: string | boolean): boolean {
 export default function RecipesScreen() {
 
     const navigation = useNavigation<RecipesScreenNavigationProp>();
+    const saluhudMobileAppAuthenticationContext = useSaluhudMobileAppAuthenticationContext();
+    let customHeadersMap = new Map<string, string>();
     const {height, width} = useWindowDimensions();
     const { t } = useTranslation();
     const [page, setPage] = useState(0);
@@ -67,7 +70,9 @@ export default function RecipesScreen() {
         const getRecipeCardData = async () => {
             setLoading(true);
             try {
-                const response = await executeGetRequest("http://" + SaluhudMobileAppConfiguration.backendURL 
+                customHeadersMap.set(SaluhudMobileAppConfiguration.jwtHttpHeader, saluhudMobileAppAuthenticationContext.jwt);
+
+                const response = await executeGetRequest(customHeadersMap,"http://" + SaluhudMobileAppConfiguration.backendURL 
                     + SaluhudMobileAppConfiguration.recipeCardDataEndpoint + "?page=" + page + "&pageSize=" + PAGE_SIZE
                     + "&minimumKilocalories=" + minKcal + "&maximumKilocalories=" + maxKcal 
                     + "&excludedAllergenicCodes=" + checkedAllergenics.join(",") + "&filterRecipeName=" + filterRecipeName);
