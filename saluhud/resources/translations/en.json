@@ -274,5 +274,16 @@
     "ALLERGENIC_11": "Lupin bean",
     "ALLERGENIC_12": "Nuts",
     "ALLERGENIC_13": "Mollusk",
-    "ALLERGENIC_14": "Lactose"
+    "ALLERGENIC_14": "Lactose",
+    "EDIT_BUTTON_TEXT": "Edit",
+    "BIOLOGICAL_SEX_MALE": "Man",
+    "BIOLOGICAL_SEX_FEMALE": "Woman",
+    "FITNESS_DATA_ACTIVITY_LEVEL_SEDENTARY": "Sedentary",
+    "FITNESS_DATA_ACTIVITY_LEVEL_LIGHTLY_ACTIVE": "Lightly active (sports 1-3 days a week)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_MODERATELY_ACTIVE": "Moderately active (sports 3-5 days a week)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_VERY_ACTIVE": "Very active (sports 6-7 days a week)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_EXTRA_ACTIVE": "Extremely active (sports and a physical job)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_PROFESSIONAL_ATHLETE": "Professional athlete",
+    "CANCEL_BUTTON_TEXT": "Cancel",
+    "SAVING_LOADING_MODAL_MESSAGE": "Saving..."
 }

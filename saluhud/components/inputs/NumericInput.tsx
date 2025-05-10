@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { StyleProp, StyleSheet, Text, TextInput, View, ViewStyle } from "react-native";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { NativeSyntheticEvent, StyleProp, StyleSheet, Text, TextInput, TextInputFocusEventData, View, ViewStyle } from "react-native";
 
 interface NumericInputProps {
     numericInputType: NumericInputType,
@@ -18,7 +18,7 @@ export const enum NumericInputType
 }
 
 const numericInputRegex = /^-?\d*$/;
-const decimalInputRegex = /^-?\d+(\.\d+)?$/;
+const decimalInputRegex = /^-?\d+(\.\d*)?$/;
 
 const JAVA_INTEGER_MAX_VALUE: number = 2147483647;
 const JAVA_FLOAT_MAX_VALUE: number = 3.4028235e+38;
@@ -65,22 +65,24 @@ const NumericInput = ({numericInputType, label, minValue, maxValue, style, value
     const filterInput = (text: string) => {
         let value = "";
 
-        if(numericInputType === NumericInputType.DECIMAL) {
+        if (numericInputType === NumericInputType.DECIMAL) {
 
-            setValue(decimalInputRegex.test(text) ? text : "");
+            value = decimalInputRegex.test(text) ? text : "";
 
-        } else if(numericInputType === NumericInputType.NUMERIC) {
+            setValue(value);
+
+        } else if (numericInputType === NumericInputType.NUMERIC) {
 
             value = numericInputRegex.test(text) ? text : "";
 
-            if(value === "") {
+            if (value === "") {
                 setValue("");
                 return;
             }
 
             const numericValue = parseInt(value);
 
-            if(numericValue > maximumInputValue || numericValue < minimumInputValue) {
+            if (numericValue > maximumInputValue || numericValue < minimumInputValue) {
                 setValue("");
                 return;
             }
@@ -89,11 +91,20 @@ const NumericInput = ({numericInputType, label, minValue, maxValue, style, value
         }
     }
 
+    const filterInputOnBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+        if (NumericInputType.DECIMAL) {
+            if (value.endsWith(".")) {
+                let newValue = value + "0";
+                setValue(newValue);
+            }
+        }
+    }
+
     return (
         <View style={[numericInputStyles.containerStyle, style]}>
             <Text style={[numericInputStyles.labelStyle]}>{label}</Text>
             <TextInput style={numericInputStyles.inputStyle} inputMode={numericInputType} 
-                onChangeText={filterInput} value={value}/>
+                onChangeText={filterInput} value={value} onBlur={filterInputOnBlur}/>
         </View>
     );
 }

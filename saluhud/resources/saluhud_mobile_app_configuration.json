@@ -4,5 +4,6 @@
     "backendURL": "192.168.1.59:9000",
     "userRegistrationEndpoint": "/saluhud-mobile-app/registration",
     "userAuthenticationEndpoint": "/saluhud-mobile-app/login",
-    "recipeCardDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-card-data"
+    "recipeCardDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-card-data",
+    "saluhudUserFitnessDataEndpoint": "/saluhud-mobile-app/user-data/user-fitness-data"
 }

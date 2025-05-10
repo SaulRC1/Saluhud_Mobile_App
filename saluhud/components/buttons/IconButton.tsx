@@ -21,7 +21,7 @@ export default function IconButton({icon: Icon, onPress, style, iconColor} : Rea
 
   return (
     <Pressable style={style} onPress={onPress} onLayout={onLayout}>
-        <Icon width={dimensions.width} height={dimensions.height} color={iconColor ?? "black"}/>
+        <Icon width={dimensions.width} height={dimensions.height} fill={iconColor ?? "black"}/>
     </Pressable>
   );
 }

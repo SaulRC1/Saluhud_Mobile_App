@@ -1,6 +1,5 @@
-import IconButton from "@components/buttons/IconButton";
-import StandardButton from "@components/buttons/StandardButton";
-import { Modal, StyleSheet, useWindowDimensions, View, Text, ScrollView, GestureResponderEvent, StyleProp, ViewStyle, NativeSyntheticEvent } from "react-native";
+import { Modal, StyleSheet, useWindowDimensions, View, Text, ScrollView, 
+    StyleProp, ViewStyle, NativeSyntheticEvent } from "react-native";
 
 interface ContainerModalProps
 {

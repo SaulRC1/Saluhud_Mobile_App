@@ -1,3 +1,4 @@
+import './gesture-handler';
 import * as React from 'react';
 import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,6 +11,9 @@ import RecipeMenuIcon from "@resources/icons/recipe-menu-icon.svg";
 import UserProfileIcon from "@resources/icons/user-profile-icon.svg";
 import RecipesScreen from '@screens/RecipesScreen';
 import { useTranslation } from 'react-i18next';
+import { createStackNavigator } from '@react-navigation/stack';
+import UserProfileScreen from '@screens/userprofile/UserProfileScreen';
+import FitnessDataProfileScreen from '@screens/userprofile/FitnessDataProfileScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -46,6 +50,28 @@ function userProfileScreenTabBarIcon(focused: boolean) {
   );
 }
 
+export type UserProfileScreenStackParamList = {
+  User_Profile_Screen: undefined;
+  User_Profile_Details_Screen: undefined;
+  Fitness_Data_Profile_Screen: undefined;
+  General_Settings_Screen: undefined;
+}
+
+const UserProfileScreenStack = createStackNavigator();
+
+const UserProfileScreenStackNavigator = () => {
+  const { t } = useTranslation();
+
+  return(
+    <UserProfileScreenStack.Navigator>
+      <UserProfileScreenStack.Screen name={"User_Profile_Details_Screen"} component={UserProfileScreen} 
+        options={{title: t("USER_PROFILE_SCREEN_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"Fitness_Data_Profile_Screen"} component={FitnessDataProfileScreen} 
+        options={{title: t("FITNESS_DATA_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
+    </UserProfileScreenStack.Navigator>
+  );
+}
+
 function App() {
 
   const { t } = useTranslation();
@@ -53,15 +79,23 @@ function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Log_In_Screen" component={LogInScreen} options={{headerShown: false, tabBarButton: () => {return null;}, tabBarStyle: { display: "none" }}}/>
-        <Tab.Screen name="Home_Screen" component={HomeScreen} options={{headerShown: false, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return homeScreenTabBarIcon(focused);}}}/>
+        <Tab.Screen name="Log_In_Screen" component={LogInScreen} 
+          options={{headerShown: false, tabBarButton: () => {return null;}, tabBarStyle: { display: "none" }, unmountOnBlur: true}}/>
+        <Tab.Screen name="Home_Screen" component={HomeScreen} 
+          options={{headerShown: false, tabBarShowLabel: false, 
+          tabBarIcon: ({focused}) => {return homeScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
         <Tab.Screen name="Recipes_Screen" component={RecipesScreen} options={{
             headerShown: true, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return recipeScreenTabBarIcon(focused);},
-            title: t("RECIPES_SCREEN_TITLE")
+            title: t("RECIPES_SCREEN_TITLE"), unmountOnBlur: true
           }}/>
-        <Tab.Screen name="Menus_Screen" component={HomeScreen} options={{headerShown: false, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return menusScreenTabBarIcon(focused);}}}/>
-        <Tab.Screen name="User_Profile_Screen" component={HomeScreen} options={{headerShown: false, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return userProfileScreenTabBarIcon(focused);}}}/>
-        <Tab.Screen name="Sign_Up_Screen" component={SignUpScreen} options={{headerShown: false, tabBarButton: () => {return null;}, tabBarStyle: { display: "none" }}}/>
+        <Tab.Screen name="Menus_Screen" component={HomeScreen} 
+          options={{headerShown: false, tabBarShowLabel: false, 
+          tabBarIcon: ({focused}) => {return menusScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
+        <Tab.Screen name="User_Profile_Screen" component={UserProfileScreenStackNavigator} 
+          options={{headerShown: false, tabBarShowLabel: false, 
+          tabBarIcon: ({focused}) => {return userProfileScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
+        <Tab.Screen name="Sign_Up_Screen" component={SignUpScreen} 
+          options={{headerShown: false, tabBarButton: () => {return null;}, tabBarStyle: { display: "none" }, unmountOnBlur: true}}/>
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -274,5 +274,16 @@
     "ALLERGENIC_11": "Altramuces",
     "ALLERGENIC_12": "Frutos con cáscara",
     "ALLERGENIC_13": "Moluscos",
-    "ALLERGENIC_14": "Lácteos"
+    "ALLERGENIC_14": "Lácteos",
+    "EDIT_BUTTON_TEXT": "Editar",
+    "BIOLOGICAL_SEX_MALE": "Hombre",
+    "BIOLOGICAL_SEX_FEMALE": "Mujer",
+    "FITNESS_DATA_ACTIVITY_LEVEL_SEDENTARY": "Sedentario",
+    "FITNESS_DATA_ACTIVITY_LEVEL_LIGHTLY_ACTIVE": "Ligeramente activo (deporte 1-3 días por semana)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_MODERATELY_ACTIVE": "Moderadamente activo (deporte 3-5 días por semana)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_VERY_ACTIVE": "Muy activo (deporte 6-7 días por semana)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_EXTRA_ACTIVE": "Extremadamente activo (deporte y trabajo físico)",
+    "FITNESS_DATA_ACTIVITY_LEVEL_PROFESSIONAL_ATHLETE": "Atleta profesional",
+    "CANCEL_BUTTON_TEXT": "Cancelar",
+    "SAVING_LOADING_MODAL_MESSAGE": "Guardando..."
 }
