@@ -4,6 +4,7 @@ import ApiErrorResponse from "@src/response/ApiErrorResponse";
 import ApiErrorException from "@src/exception/ApiErrorException";
 import { SetStateAction } from "react";
 import SaluhudUserFitnessDataDTO from "@src/dto/user/SaluhudUserFitnessDataDTO";
+import SaluhudUserDTO from "@src/dto/user/SaluhudUserDTO";
 
 const commonApiHttpRequestHeaders = {
   'Content-Type': 'application/json',
@@ -86,4 +87,21 @@ export const getSaluhudUserFitnessData = async (setLoading: (value: SetStateActi
     } finally {
         setLoading(false);
     }
+};
+
+export const getSaluhudUserData = async (
+  customHeadersMap: Map<string, string>,
+  setUserData: (value: SetStateAction<SaluhudUserDTO | null>) => void,
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.saluhudUserDataEndpoint,
+  );
+
+  const userData: SaluhudUserDTO = await response.json();
+
+  setUserData(userData);
+  console.log(userData);
 };

@@ -25,5 +25,10 @@
     "FITNESS_DATA_NO_DATA_MESSAGE": "No existen datos nutricionales ni deportivos registrados.",
     "FITNESS_DATA_CREATE_PROFILE_TEXT": "Crear perfil",
     "FITNESS_DATA_BIOLOGICAL_SEX_DROPDOWN_PLACEHOLDER": "Selecciona un sexo biológico...",
-    "FITNESS_DATA_ACTIVITY_FACTOR_DROPDOWN_PLACEHOLDER": "Selecciona un nivel de actividad..."
+    "FITNESS_DATA_ACTIVITY_FACTOR_DROPDOWN_PLACEHOLDER": "Selecciona un nivel de actividad...",
+    "USER_PROFILE_TITLE": "Mi perfil",
+    "USER_DETAILS_PROFILE_NAME_AND_SURNAME_LABEL": "Nombre y apellidos",
+    "USER_DETAILS_PROFILE_USERNAME_LABEL": "Nombre de usuario",
+    "USER_DETAILS_PROFILE_EMAIL_LABEL": "Correo electrónico",
+    "USER_DETAILS_PROFILE_PHONE_NUMBER_LABEL": "Número de teléfono"
 }

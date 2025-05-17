@@ -285,5 +285,7 @@
     "FITNESS_DATA_ACTIVITY_LEVEL_EXTRA_ACTIVE": "Extremadamente activo (deporte y trabajo físico)",
     "FITNESS_DATA_ACTIVITY_LEVEL_PROFESSIONAL_ATHLETE": "Atleta profesional",
     "CANCEL_BUTTON_TEXT": "Cancelar",
-    "SAVING_LOADING_MODAL_MESSAGE": "Guardando..."
+    "SAVING_LOADING_MODAL_MESSAGE": "Guardando...",
+    "NETWORK_TIMEOUT_ERROR": "Ha ocurrido un error de red, por favor compruebe su conexión a internet e inténtelo de nuevo.",
+    "NETWORK_UNKNOW_ERROR": "Ha ocurrido un error desconocido, por favor intentalo de nuevo."
 }

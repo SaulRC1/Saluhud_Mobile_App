@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { createStackNavigator } from '@react-navigation/stack';
 import UserProfileScreen from '@screens/userprofile/UserProfileScreen';
 import FitnessDataProfileScreen from '@screens/userprofile/FitnessDataProfileScreen';
+import UserProfileDetailsScreen from '@screens/userprofile/UserProfileDetailsScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -52,6 +53,7 @@ function userProfileScreenTabBarIcon(focused: boolean) {
 
 export type UserProfileScreenStackParamList = {
   User_Profile_Screen: undefined;
+  User_Profile_Main_Screen: undefined;
   User_Profile_Details_Screen: undefined;
   Fitness_Data_Profile_Screen: undefined;
   General_Settings_Screen: undefined;
@@ -64,10 +66,12 @@ const UserProfileScreenStackNavigator = () => {
 
   return(
     <UserProfileScreenStack.Navigator>
-      <UserProfileScreenStack.Screen name={"User_Profile_Details_Screen"} component={UserProfileScreen} 
+      <UserProfileScreenStack.Screen name={"User_Profile_Main_Screen"} component={UserProfileScreen} 
         options={{title: t("USER_PROFILE_SCREEN_TITLE", { ns: "user_profile_screen_translations" })}}/>
       <UserProfileScreenStack.Screen name={"Fitness_Data_Profile_Screen"} component={FitnessDataProfileScreen} 
         options={{title: t("FITNESS_DATA_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"User_Profile_Details_Screen"} component={UserProfileDetailsScreen} 
+        options={{title: t("USER_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
     </UserProfileScreenStack.Navigator>
   );
 }

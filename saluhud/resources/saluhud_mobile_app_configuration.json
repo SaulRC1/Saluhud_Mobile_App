@@ -5,5 +5,6 @@
     "userRegistrationEndpoint": "/saluhud-mobile-app/registration",
     "userAuthenticationEndpoint": "/saluhud-mobile-app/login",
     "recipeCardDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-card-data",
-    "saluhudUserFitnessDataEndpoint": "/saluhud-mobile-app/user-data/user-fitness-data"
+    "saluhudUserFitnessDataEndpoint": "/saluhud-mobile-app/user-data/user-fitness-data",
+    "saluhudUserDataEndpoint": "/saluhud-mobile-app/user-data/user"
 }

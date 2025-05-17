@@ -25,5 +25,10 @@
     "FITNESS_DATA_NO_DATA_MESSAGE": "No fitness data available.",
     "FITNESS_DATA_CREATE_PROFILE_TEXT": "Create fitness profile",
     "FITNESS_DATA_BIOLOGICAL_SEX_DROPDOWN_PLACEHOLDER": "Select a biological sex...",
-    "FITNESS_DATA_ACTIVITY_FACTOR_DROPDOWN_PLACEHOLDER": "Select an activity level..."
+    "FITNESS_DATA_ACTIVITY_FACTOR_DROPDOWN_PLACEHOLDER": "Select an activity level...",
+    "USER_PROFILE_TITLE": "My profile",
+    "USER_DETAILS_PROFILE_NAME_AND_SURNAME_LABEL": "Name and surname",
+    "USER_DETAILS_PROFILE_USERNAME_LABEL": "Username",
+    "USER_DETAILS_PROFILE_EMAIL_LABEL": "Email",
+    "USER_DETAILS_PROFILE_PHONE_NUMBER_LABEL": "Phone number"
 }
