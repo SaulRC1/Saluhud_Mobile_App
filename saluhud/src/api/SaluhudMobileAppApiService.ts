@@ -6,12 +6,12 @@ import { SetStateAction } from "react";
 import SaluhudUserFitnessDataDTO from "@src/dto/user/SaluhudUserFitnessDataDTO";
 import SaluhudUserDTO from "@src/dto/user/SaluhudUserDTO";
 
-const commonApiHttpRequestHeaders = {
+const getCommonApiHttpRequestHeaders = () => ({
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'Accept-Language': i18next.language,
   'X-API-KEY': SaluhudMobileAppConfiguration.apiKey,
-};
+});
 
 export async function executeGetRequest(customHeaders: Map<string, string>, url: string) {
   const controller = new AbortController();
@@ -21,7 +21,7 @@ export async function executeGetRequest(customHeaders: Map<string, string>, url:
     url,
     {
       method: 'GET',
-      headers: {...commonApiHttpRequestHeaders, ...Object.fromEntries(customHeaders)},
+      headers: {...getCommonApiHttpRequestHeaders(), ...Object.fromEntries(customHeaders)},
       signal: controller.signal,
     },
   );
@@ -49,7 +49,7 @@ export async function executePostRequest(customHeaders: Map<string, string>, url
     url,
     {
       method: 'POST',
-      headers: {...commonApiHttpRequestHeaders, ...Object.fromEntries(customHeaders)},
+      headers: {...getCommonApiHttpRequestHeaders(), ...Object.fromEntries(customHeaders)},
       body: JSON.stringify(data),
       signal: controller.signal,
     },

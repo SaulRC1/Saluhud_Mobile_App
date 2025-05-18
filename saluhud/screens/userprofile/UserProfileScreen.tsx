@@ -90,7 +90,7 @@ const UserProfileScreen = () => {
 
                 <MenuButton icon={SettingsIcon}
                     text={t("GENERAL_SETTINGS_TITLE", { ns: "user_profile_screen_translations" })}
-                    style={userProfileScreenStyles.menuButton} onPress={() => { }}
+                    style={userProfileScreenStyles.menuButton} onPress={() => {navigation.navigate("General_Settings_Screen");}}
                 />
             </>
         );

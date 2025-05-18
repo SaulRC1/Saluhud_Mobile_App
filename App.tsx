@@ -15,6 +15,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import UserProfileScreen from '@screens/userprofile/UserProfileScreen';
 import FitnessDataProfileScreen from '@screens/userprofile/FitnessDataProfileScreen';
 import UserProfileDetailsScreen from '@screens/userprofile/UserProfileDetailsScreen';
+import GeneralSettingsScreen from '@screens/userprofile/GeneralSettingsScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -72,6 +73,8 @@ const UserProfileScreenStackNavigator = () => {
         options={{title: t("FITNESS_DATA_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
       <UserProfileScreenStack.Screen name={"User_Profile_Details_Screen"} component={UserProfileDetailsScreen} 
         options={{title: t("USER_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"General_Settings_Screen"} component={GeneralSettingsScreen} 
+        options={{title: t("GENERAL_SETTINGS_TITLE", { ns: "user_profile_screen_translations" })}}/>
     </UserProfileScreenStack.Navigator>
   );
 }
