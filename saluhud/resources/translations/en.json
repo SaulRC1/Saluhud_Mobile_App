@@ -287,5 +287,6 @@
     "CANCEL_BUTTON_TEXT": "Cancel",
     "SAVING_LOADING_MODAL_MESSAGE": "Saving...",
     "NETWORK_TIMEOUT_ERROR": "A network error has occurred, please check your internet connection status and try again.",
-    "NETWORK_UNKNOW_ERROR": "An unknown error has occurred, please try again."
+    "NETWORK_UNKNOW_ERROR": "An unknown error has occurred, please try again.",
+    "RECIPE_DETAIL_SCREEN_TITLE": "Recipe detail"
 }

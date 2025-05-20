@@ -1,14 +1,15 @@
 import { AllergenicEnum } from "@src/entity/AllergenicEnum";
 import React from "react";
-import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { GestureResponderEvent, Image, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
 interface RecipeCardProps {
     id: bigint,
     name: string,
     kilocalories: number,
     imageSource?: string,
-    allergenics?: AllergenicEnum[]
-    style?: StyleProp<ViewStyle>
+    allergenics?: AllergenicEnum[],
+    style?: StyleProp<ViewStyle>,
+    onPress: (event: GestureResponderEvent) => void
 }
 
 const renderAllergenics = (allergenics: AllergenicEnum[]) => {
@@ -65,7 +66,7 @@ const renderAllergenics = (allergenics: AllergenicEnum[]) => {
     );
 }
 
-function RecipeCardComponent({id, name, kilocalories, imageSource, allergenics, style} : Readonly<RecipeCardProps>) {
+function RecipeCardComponent({id, name, kilocalories, imageSource, allergenics, style, onPress} : Readonly<RecipeCardProps>) {
 
     let emptyImageSource = false;
 
@@ -75,13 +76,13 @@ function RecipeCardComponent({id, name, kilocalories, imageSource, allergenics, 
     }
 
     return(
-        <View style={[recipeCardStyles.card, style]}>
+        <Pressable style={[recipeCardStyles.card, style]} onPress={onPress}>
             <Image source={emptyImageSource ? require("@resources/images/general/recipe_card_img_placeholder.png") 
                 : {uri: imageSource}} style={recipeCardStyles.recipeImage} resizeMode={emptyImageSource ? "contain" : "cover"}/>
             <Text style={recipeCardStyles.recipeName}>{name}</Text>
             <Text style={recipeCardStyles.kilocaloriesText}>{kilocalories + " Kcal"}</Text>
             {allergenics !== undefined && allergenics !== null ? renderAllergenics(allergenics) : null}
-        </View>
+        </Pressable>
     );
 }
 

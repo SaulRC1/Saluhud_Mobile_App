@@ -5,6 +5,7 @@ import ApiErrorException from "@src/exception/ApiErrorException";
 import { SetStateAction } from "react";
 import SaluhudUserFitnessDataDTO from "@src/dto/user/SaluhudUserFitnessDataDTO";
 import SaluhudUserDTO from "@src/dto/user/SaluhudUserDTO";
+import RecipeDetailDTO from "@src/dto/nutrition/RecipeDetailDTO";
 
 const getCommonApiHttpRequestHeaders = () => ({
   'Content-Type': 'application/json',
@@ -104,4 +105,16 @@ export const getSaluhudUserData = async (
 
   setUserData(userData);
   console.log(userData);
+};
+
+export const getRecipeDetailData = async (customHeadersMap: Map<string, string>, recipeID: bigint) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.recipeDetailDataEndpoint + "?recipeID=" + recipeID.toString()
+  );
+
+  const recipeDetail: RecipeDetailDTO = await response.json();
+  return recipeDetail;
 };

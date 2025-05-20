@@ -1,5 +1,5 @@
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
-import { RootTabParamList } from "@root/App";
+import { RecipesScreenStackParamList, RootTabParamList } from "@root/App";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import RecipeCard from "@components/recipe/RecipeCard";
@@ -17,8 +17,9 @@ import { AdvancedCheckbox, CheckboxGroup } from "react-native-advanced-checkbox"
 import { AllergenicEnum, fromAllergenicId } from "@src/entity/AllergenicEnum";
 import RecipeCardAllergenicDTO from "@src/dto/nutrition/RecipeCardAllergenicDTO";
 import { useSaluhudMobileAppAuthenticationContext } from "@src/global/SaluhudMobileAppContext";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-type RecipesScreenNavigationProp = BottomTabNavigationProp<RootTabParamList, 'Recipes_Screen'>;
+type RecipesScreenNavigationProp = StackNavigationProp<RecipesScreenStackParamList, "Recipes_Main_Screen">;
 
 function stringToBoolean(value: string | boolean): boolean {
     if(typeof value === "boolean") {
@@ -117,7 +118,12 @@ export default function RecipesScreen() {
     const renderRecipeCardItem = useCallback(({ item }: { item: RecipeCardDTO }) => (
     <RecipeCard id={item.recipeID} name={item.recipeName} kilocalories={item.recipeKcal}
     style={recipeCardStyles.recipeCard} imageSource={item.recipeImageSource} 
-    allergenics={mapRecipeCardAllergenicDTOToAllergenicEnum(item.recipeAllergenics)}/>), []);
+    allergenics={mapRecipeCardAllergenicDTOToAllergenicEnum(item.recipeAllergenics)}
+    onPress={() => {
+        navigation.navigate('Recipe_Detail_Screen', {
+            recipeID: item.recipeID
+        });
+    }}/>), []);
 
     const FiltersModal = () => {
 

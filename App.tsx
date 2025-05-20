@@ -16,6 +16,7 @@ import UserProfileScreen from '@screens/userprofile/UserProfileScreen';
 import FitnessDataProfileScreen from '@screens/userprofile/FitnessDataProfileScreen';
 import UserProfileDetailsScreen from '@screens/userprofile/UserProfileDetailsScreen';
 import GeneralSettingsScreen from '@screens/userprofile/GeneralSettingsScreen';
+import RecipeDetailScreen from '@screens/RecipeDetailScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -79,6 +80,27 @@ const UserProfileScreenStackNavigator = () => {
   );
 }
 
+export type RecipesScreenStackParamList = {
+  Recipes_Screen: undefined;
+  Recipes_Main_Screen: undefined;
+  Recipe_Detail_Screen: { recipeID: bigint };
+}
+
+const RecipesScreenStack = createStackNavigator();
+
+const RecipesScreenStackNavigator = () => {
+  const { t } = useTranslation();
+
+  return(
+    <RecipesScreenStack.Navigator>
+      <RecipesScreenStack.Screen name={"Recipes_Main_Screen"} component={RecipesScreen} 
+        options={{title: t("RECIPES_SCREEN_TITLE")}}/>
+      <RecipesScreenStack.Screen name={"Recipe_Detail_Screen"} component={RecipeDetailScreen} 
+        options={{title: t("RECIPE_DETAIL_SCREEN_TITLE")}}/>
+    </RecipesScreenStack.Navigator>
+  );
+}
+
 function App() {
 
   const { t } = useTranslation();
@@ -91,8 +113,8 @@ function App() {
         <Tab.Screen name="Home_Screen" component={HomeScreen} 
           options={{headerShown: false, tabBarShowLabel: false, 
           tabBarIcon: ({focused}) => {return homeScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
-        <Tab.Screen name="Recipes_Screen" component={RecipesScreen} options={{
-            headerShown: true, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return recipeScreenTabBarIcon(focused);},
+        <Tab.Screen name="Recipes_Screen" component={RecipesScreenStackNavigator} options={{
+            headerShown: false, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return recipeScreenTabBarIcon(focused);},
             title: t("RECIPES_SCREEN_TITLE"), unmountOnBlur: true
           }}/>
         <Tab.Screen name="Menus_Screen" component={HomeScreen} 
