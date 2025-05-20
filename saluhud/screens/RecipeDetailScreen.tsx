@@ -192,12 +192,11 @@ const RecipeDetailScreen = () => {
                     </Text>
 
                     <View style={recipeDetailScreenStyles.sectionContent}>
-                        {recipeDetail.recipeIngredients.map((recipeIngredient) => (
-                            <View key={recipeIngredient.ingredient.name} style={recipeDetailScreenStyles.ingredientComponent}>
+                        {recipeDetail.ingredientsDescription.split(",").map((recipeIngredient) => (
+                            <View key={recipeIngredient.trim()} style={recipeDetailScreenStyles.ingredientComponent}>
                                 <View style={recipeDetailScreenStyles.bullet} />
                                 <Text style={{fontSize: 16, color: "black"}}>
-                                    {recipeIngredient.ingredient.name + " (" + recipeIngredient.quantity + " " 
-                                        + recipeIngredient.unit + ")"}
+                                    {recipeIngredient.trim()}
                                 </Text>
                             </View>
                         ))}
