@@ -6,6 +6,15 @@ import { SetStateAction } from "react";
 import SaluhudUserFitnessDataDTO from "@src/dto/user/SaluhudUserFitnessDataDTO";
 import SaluhudUserDTO from "@src/dto/user/SaluhudUserDTO";
 import RecipeDetailDTO from "@src/dto/nutrition/RecipeDetailDTO";
+import MenuCardDTO from "@src/dto/nutrition/MenuCardDTO";
+import CreateNewMenuDTO from "@src/dto/nutrition/CreateNewMenuDTO";
+import ApiInformationResponse from "@src/response/ApiInformationResponse";
+import MenuDayDTO from "@src/dto/nutrition/MenuDayDTO";
+import MenuDayDetailDTO from "@src/dto/nutrition/MenuDayDetailDTO";
+import RecipeNameAndIdDataDTO from "@src/dto/nutrition/RecipeNameAndIdDataDTO";
+import AddMenuDayToMenuDTO from "@src/dto/nutrition/AddMenuDayToMenuDTO";
+import AddRecipeToMenuDayDTO from "@src/dto/nutrition/AddRecipeToMenuDayDTO";
+import EditMenuDTO from "@src/dto/nutrition/EditMenuDTO";
 
 const getCommonApiHttpRequestHeaders = () => ({
   'Content-Type': 'application/json',
@@ -50,6 +59,62 @@ export async function executePostRequest(customHeaders: Map<string, string>, url
     url,
     {
       method: 'POST',
+      headers: {...getCommonApiHttpRequestHeaders(), ...Object.fromEntries(customHeaders)},
+      body: JSON.stringify(data),
+      signal: controller.signal,
+    },
+  );
+
+  clearTimeout(timeout);
+
+  if (!response.ok) {
+    const apiErrorResponse: ApiErrorResponse = await response.json();
+    throw new ApiErrorException(
+      apiErrorResponse.errorMessage,
+      response.status,
+      apiErrorResponse.apiEndPoint,
+    );
+  }
+
+  return response;
+}
+
+export async function executeDeleteRequest(customHeaders: Map<string, string>, url: string) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+
+  const response = await fetch(
+    url,
+    {
+      method: 'DELETE',
+      headers: {...getCommonApiHttpRequestHeaders(), ...Object.fromEntries(customHeaders)},
+      signal: controller.signal,
+    },
+  );
+
+  clearTimeout(timeout);
+
+  if (!response.ok) {
+    const apiErrorResponse: ApiErrorResponse = await response.json();
+    throw new ApiErrorException(
+      apiErrorResponse.errorMessage,
+      response.status,
+      apiErrorResponse.apiEndPoint,
+    );
+  }
+
+  return response;
+}
+
+export async function executePutRequest(customHeaders: Map<string, string>, url: string, data?: any)
+{
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+
+  const response = await fetch(
+    url,
+    {
+      method: 'PUT',
       headers: {...getCommonApiHttpRequestHeaders(), ...Object.fromEntries(customHeaders)},
       body: JSON.stringify(data),
       signal: controller.signal,
@@ -117,4 +182,154 @@ export const getRecipeDetailData = async (customHeadersMap: Map<string, string>,
 
   const recipeDetail: RecipeDetailDTO = await response.json();
   return recipeDetail;
+};
+
+export const getMenuCardData = async (customHeadersMap: Map<string, string>) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.menuCardDataEndpoint
+  );
+
+  const menuCardData: MenuCardDTO[] = await response.json();
+  return menuCardData;
+};
+
+export const postCreateNewMenu = async (customHeadersMap: Map<string, string>, newMenu: CreateNewMenuDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.createNewMenuEndpoint,
+      newMenu
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const getMenuDetailData = async (customHeadersMap: Map<string, string>, menuID: bigint) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.menuDetailDataEndpoint + "?menuID=" + menuID
+  );
+
+  const menuDetailData: MenuDayDTO[] = await response.json();
+  return menuDetailData;
+};
+
+export const getMenuDayDetailData = async (customHeadersMap: Map<string, string>, menuDayID: bigint) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.menuDayDetailDataEndpoint + "?menuDayID=" + menuDayID
+  );
+
+  const menuDetailData: MenuDayDetailDTO = await response.json();
+  return menuDetailData;
+};
+
+export const getRecipesNameAndIdData = async (customHeadersMap: Map<string, string>) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.recipesNameAndIdDataEndpoint
+  );
+
+  const menuDetailData: RecipeNameAndIdDataDTO[] = await response.json();
+  return menuDetailData;
+};
+
+export const postAddMenuDayToMenu = async (customHeadersMap: Map<string, string>, menuDay: AddMenuDayToMenuDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.addMenuDayToMenuEndpoint,
+      menuDay
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const postAddRecipeToMenuDay = async (customHeadersMap: Map<string, string>, recipe: AddRecipeToMenuDayDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.addRecipeToMenuDayEndpoint,
+      recipe
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const removeRecipeFromMenuDay = async (customHeadersMap: Map<string, string>, menuDayId: bigint, menuDayRecipeId: bigint) => {
+  const response = await executeDeleteRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.removeRecipeFromMenuDayEndpoint.replace("{menuDayId}/{menuDayRecipeId}", 
+        menuDayId.toString() + "/" + menuDayRecipeId.toString())
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const removeMenuDayFromMenu = async (customHeadersMap: Map<string, string>, menuId: bigint, menuDayId: bigint) => {
+  const response = await executeDeleteRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.removeMenuDayFromMenuEndpoint.replace("{menuId}/{menuDayId}", 
+        menuId.toString() + "/" + menuDayId.toString())
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const removeMenu = async (customHeadersMap: Map<string, string>, menuId: bigint) => {
+  const response = await executeDeleteRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.removeMenuEndpoint.replace("{menuId}", menuId.toString())
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const putEditMenu = async (customHeadersMap: Map<string, string>, editMenuDTO: EditMenuDTO) => {
+  const response = await executePutRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.editMenuEndpoint,
+      editMenuDTO
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const putSetMenuAsFavourite = async (customHeadersMap: Map<string, string>, menuId: bigint) => {
+  const response = await executePutRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.setMenuAsFavouriteEndpoint.replace("{menuId}", menuId.toString())
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
 };

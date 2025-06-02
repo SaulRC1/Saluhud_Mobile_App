@@ -7,5 +7,17 @@
     "recipeCardDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-card-data",
     "saluhudUserFitnessDataEndpoint": "/saluhud-mobile-app/user-data/user-fitness-data",
     "saluhudUserDataEndpoint": "/saluhud-mobile-app/user-data/user",
-    "recipeDetailDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-detail-data"
+    "recipeDetailDataEndpoint": "/saluhud-mobile-app/recipe-data/recipe-detail-data",
+    "menuCardDataEndpoint": "/saluhud-mobile-app/menu-data/menu-card-data",
+    "createNewMenuEndpoint": "/saluhud-mobile-app/menu-data/create-new-menu",
+    "menuDetailDataEndpoint": "/saluhud-mobile-app/menu-data/menu-detail-data",
+    "menuDayDetailDataEndpoint": "/saluhud-mobile-app/menu-data/menu-day-detail-data",
+    "recipesNameAndIdDataEndpoint": "/saluhud-mobile-app/recipe-data/recipes-name-and-id-data",
+    "addMenuDayToMenuEndpoint": "/saluhud-mobile-app/menu-data/add-menu-day-to-menu",
+    "addRecipeToMenuDayEndpoint": "/saluhud-mobile-app/menu-data/add-recipe-to-menu-day",
+    "removeRecipeFromMenuDayEndpoint": "/saluhud-mobile-app/menu-data/remove-recipe-from-menu-day/{menuDayId}/{menuDayRecipeId}",
+    "removeMenuDayFromMenuEndpoint": "/saluhud-mobile-app/menu-data/remove-menu-day-from-menu/{menuId}/{menuDayId}",
+    "removeMenuEndpoint": "/saluhud-mobile-app/menu-data/remove-menu/{menuId}",
+    "editMenuEndpoint": "/saluhud-mobile-app/menu-data/edit-menu",
+    "setMenuAsFavouriteEndpoint": "/saluhud-mobile-app/menu-data/set-menu-as-favourite/{menuId}"
 }

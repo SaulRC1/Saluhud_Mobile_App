@@ -1,6 +1,8 @@
 import { en, en_sign_up_screen_error_messages, es, es_sign_up_screen_error_messages, en_login_screen_translations, 
   es_login_screen_translations, en_recipes_screen_translations, es_recipes_screen_translations, 
-  en_user_profile_screen_translations, es_user_profile_screen_translations } from "@resources/translations/translations";
+  en_user_profile_screen_translations, es_user_profile_screen_translations, 
+  en_menus_screen_translations,
+  es_menus_screen_translations} from "@resources/translations/translations";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
@@ -10,14 +12,16 @@ const resources = {
         sign_up_screen_error_messages: en_sign_up_screen_error_messages,
         login_screen_translations: en_login_screen_translations,
         recipes_screen_translations: en_recipes_screen_translations,
-        user_profile_screen_translations: en_user_profile_screen_translations
+        user_profile_screen_translations: en_user_profile_screen_translations,
+        menus_screen_translations: en_menus_screen_translations
     },
     es: {
         translation: es,
         sign_up_screen_error_messages: es_sign_up_screen_error_messages,
         login_screen_translations: es_login_screen_translations,
         recipes_screen_translations: es_recipes_screen_translations,
-        user_profile_screen_translations: es_user_profile_screen_translations
+        user_profile_screen_translations: es_user_profile_screen_translations,
+        menus_screen_translations: es_menus_screen_translations
     }
 };
 

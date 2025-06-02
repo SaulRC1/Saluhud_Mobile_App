@@ -17,6 +17,9 @@ import FitnessDataProfileScreen from '@screens/userprofile/FitnessDataProfileScr
 import UserProfileDetailsScreen from '@screens/userprofile/UserProfileDetailsScreen';
 import GeneralSettingsScreen from '@screens/userprofile/GeneralSettingsScreen';
 import RecipeDetailScreen from '@screens/RecipeDetailScreen';
+import MenusScreen from '@screens/menu/MenusScreen';
+import MenuDetailScreen from '@screens/menu/MenuDetailScreen';
+import MenuDayDetailScreen from '@screens/menu/MenuDayDetailScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -101,6 +104,33 @@ const RecipesScreenStackNavigator = () => {
   );
 }
 
+export type MenusScreenStackParamList = {
+  Menus_Screen: undefined;
+  Menus_Main_Screen: undefined;
+  Menu_Detail_Screen: { menuID: bigint };
+  Menu_Day_Detail_Screen: { menuDayID: bigint };
+  Menu_Day_Recipe_Detail_Screen: { recipeID: bigint }
+}
+
+const MenusScreenStack = createStackNavigator();
+
+const MenusScreenStackNavigator = () => {
+  const { t } = useTranslation();
+
+  return(
+    <MenusScreenStack.Navigator>
+      <MenusScreenStack.Screen name={"Menus_Main_Screen"} component={MenusScreen} 
+        options={{title: t("MENUS_SCREEN_TITLE")}}/>
+      <MenusScreenStack.Screen name={"Menu_Detail_Screen"} component={MenuDetailScreen} 
+        options={{title: t("MENU_DETAIL_SCREEN_TITLE")}}/>
+      <MenusScreenStack.Screen name={"Menu_Day_Detail_Screen"} component={MenuDayDetailScreen} 
+        options={{title: t("MENU_DAY_DETAIL_SCREEN_TITLE")}}/>
+      <MenusScreenStack.Screen name={"Menu_Day_Recipe_Detail_Screen"} component={RecipeDetailScreen} 
+        options={{title: t("RECIPE_DETAIL_SCREEN_TITLE")}}/>
+    </MenusScreenStack.Navigator>
+  );
+}
+
 function App() {
 
   const { t } = useTranslation();
@@ -113,13 +143,16 @@ function App() {
         <Tab.Screen name="Home_Screen" component={HomeScreen} 
           options={{headerShown: false, tabBarShowLabel: false, 
           tabBarIcon: ({focused}) => {return homeScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
+
         <Tab.Screen name="Recipes_Screen" component={RecipesScreenStackNavigator} options={{
             headerShown: false, tabBarShowLabel: false, tabBarIcon: ({focused}) => {return recipeScreenTabBarIcon(focused);},
             title: t("RECIPES_SCREEN_TITLE"), unmountOnBlur: true
           }}/>
-        <Tab.Screen name="Menus_Screen" component={HomeScreen} 
+
+        <Tab.Screen name="Menus_Screen" component={MenusScreenStackNavigator} 
           options={{headerShown: false, tabBarShowLabel: false, 
           tabBarIcon: ({focused}) => {return menusScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
+
         <Tab.Screen name="User_Profile_Screen" component={UserProfileScreenStackNavigator} 
           options={{headerShown: false, tabBarShowLabel: false, 
           tabBarIcon: ({focused}) => {return userProfileScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>

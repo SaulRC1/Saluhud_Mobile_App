@@ -1,3 +1,5 @@
+import RecipeCardAllergenicDTO from "@src/dto/nutrition/RecipeCardAllergenicDTO";
+
 export const enum AllergenicEnum {
     GLUTEN = 1,
     CRUSTACEAN = 2,
@@ -48,4 +50,21 @@ export const fromAllergenicId = (id: number) => {
     default:
       return undefined;
   }
+};
+
+export const mapRecipeCardAllergenicDTOToAllergenicEnum = (
+  recipeAllergenics: RecipeCardAllergenicDTO[],
+) => {
+  let allergenicEnums: AllergenicEnum[] = [];
+
+  recipeAllergenics.forEach(recipeAllergenic => {
+    let allergenicEnum = fromAllergenicId(recipeAllergenic.allergenicId);
+
+    if (allergenicEnum !== undefined) {
+      allergenicEnums.push(allergenicEnum);
+      //console.log("Pushed allergenic: " + allergenicEnum);
+    }
+  });
+
+  return allergenicEnums;
 };

@@ -288,5 +288,16 @@
     "SAVING_LOADING_MODAL_MESSAGE": "Guardando...",
     "NETWORK_TIMEOUT_ERROR": "Ha ocurrido un error de red, por favor compruebe su conexión a internet e inténtelo de nuevo.",
     "NETWORK_UNKNOW_ERROR": "Ha ocurrido un error desconocido, por favor intentalo de nuevo.",
-    "RECIPE_DETAIL_SCREEN_TITLE": "Detalle de receta"
+    "RECIPE_DETAIL_SCREEN_TITLE": "Detalle de receta",
+    "MENUS_SCREEN_TITLE": "Menús",
+    "MENU_DETAIL_SCREEN_TITLE": "Detalle de menú",
+    "MENU_DAY_DETAIL_SCREEN_TITLE": "Detalle del día",
+    "WEEK_DAY_MONDAY": "Lunes",
+    "WEEK_DAY_TUESDAY": "Martes",
+    "WEEK_DAY_WEDNESDAY": "Miércoles",
+    "WEEK_DAY_THURSDAY": "Jueves",
+    "WEEK_DAY_FRIDAY": "Viernes",
+    "WEEK_DAY_SATURDAY": "Sábado",
+    "WEEK_DAY_SUNDAY": "Domingo",
+    "DELETE_BUTTON_TEXT": "Eliminar"
 }

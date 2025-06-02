@@ -2,14 +2,17 @@ import { AllergenicEnum } from "@src/entity/AllergenicEnum";
 import React from "react";
 import { GestureResponderEvent, Image, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
-interface RecipeCardProps {
+interface MenuDayRecipeCardProps {
     id: bigint,
     name: string,
     kilocalories: number,
     imageSource?: string,
     allergenics?: AllergenicEnum[],
     style?: StyleProp<ViewStyle>,
-    onPress: (event: GestureResponderEvent) => void
+    onPress: (event: GestureResponderEvent) => void,
+    startTime: string,
+    endTime: string,
+    onLongPress?: (event: GestureResponderEvent) => void
 }
 
 const renderAllergenics = (allergenics: AllergenicEnum[]) => {
@@ -66,7 +69,8 @@ const renderAllergenics = (allergenics: AllergenicEnum[]) => {
     );
 }
 
-function RecipeCardComponent({id, name, kilocalories, imageSource, allergenics, style, onPress} : Readonly<RecipeCardProps>) {
+function MenuDayRecipeCardComponent({id, name, kilocalories, imageSource, allergenics, style, onPress, startTime, endTime, onLongPress} 
+    : Readonly<MenuDayRecipeCardProps>) {
 
     let emptyImageSource = false;
 
@@ -76,20 +80,22 @@ function RecipeCardComponent({id, name, kilocalories, imageSource, allergenics, 
     }
 
     return(
-        <Pressable style={({ pressed }) => [recipeCardStyles.card, style, pressed && { transform: [{ scale: 0.95 }] }]} 
-            onPress={onPress}>
+        <Pressable 
+            style={({ pressed }) => [menuDayRecipeCardStyles.card, style, pressed && { transform: [{ scale: 0.95 }] }]} 
+            onPress={onPress} onLongPress={onLongPress}>
+            <Text style={menuDayRecipeCardStyles.timeSpanText}>{startTime + " - " + endTime}</Text>
             <Image source={emptyImageSource ? require("@resources/images/general/recipe_card_img_placeholder.png") 
-                : {uri: imageSource}} style={recipeCardStyles.recipeImage} resizeMode={emptyImageSource ? "contain" : "cover"}/>
-            <Text style={recipeCardStyles.recipeName}>{name}</Text>
-            <Text style={recipeCardStyles.kilocaloriesText}>{kilocalories + " Kcal"}</Text>
+                : {uri: imageSource}} style={menuDayRecipeCardStyles.recipeImage} resizeMode={emptyImageSource ? "contain" : "cover"}/>
+            <Text style={menuDayRecipeCardStyles.recipeName}>{name}</Text>
+            <Text style={menuDayRecipeCardStyles.kilocaloriesText}>{kilocalories + " Kcal"}</Text>
             {allergenics !== undefined && allergenics !== null ? renderAllergenics(allergenics) : null}
         </Pressable>
     );
 }
 
-const RecipeCard = React.memo(RecipeCardComponent);
+const MenuDayRecipeCard = React.memo(MenuDayRecipeCardComponent);
 
-const recipeCardStyles = StyleSheet.create({
+const menuDayRecipeCardStyles = StyleSheet.create({
 
     card: {
         backgroundColor: "white",
@@ -117,7 +123,14 @@ const recipeCardStyles = StyleSheet.create({
 
     kilocaloriesText: {
         fontSize: 16
+    },
+
+    timeSpanText: {
+        fontSize: 20,
+        fontWeight: "600",
+        color: "#a80a2e",
+        marginBottom: 10
     }
 });
 
-export default RecipeCard;
+export default MenuDayRecipeCard;

@@ -8,3 +8,5 @@ export {default as es_recipes_screen_translations} from "@resources/translations
 export {default as en_recipes_screen_translations} from "@resources/translations/en_recipes_screen_translations.json";
 export {default as es_user_profile_screen_translations} from "@resources/translations/es_user_profile_screen_translations.json";
 export {default as en_user_profile_screen_translations} from "@resources/translations/en_user_profile_screen_translations.json";
+export {default as en_menus_screen_translations} from "@resources/translations/en_menus_screen_translations.json";
+export {default as es_menus_screen_translations} from "@resources/translations/es_menus_screen_translations.json";
