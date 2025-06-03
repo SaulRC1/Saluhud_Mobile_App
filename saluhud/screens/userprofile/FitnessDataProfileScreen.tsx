@@ -19,6 +19,7 @@ import { fromActivityFactorValue, HarrisBenedictActivityFactorEnum } from "@src/
 import CreateFitnessDataModal from "@components/modal/user/CreateFitnessDataModal";
 import LoadingModal from "@components/modal/LoadingModal";
 import InformationModal, { InformationModalVariant } from "@components/modal/InformationModal";
+import { FitnessTargetEnum, fromFitnessTargetName } from "@src/entity/FitnessTargetEnum";
 
 type FitnessDataProfileScreenNavigationProp = StackNavigationProp<UserProfileScreenStackParamList, "Fitness_Data_Profile_Screen">;
 
@@ -31,6 +32,24 @@ const getBiologicalSexTranslationKey = (biologicalSex: string) => {
 
     if(sexEnum === BiologicalSexEnum.FEMALE) {
         return "BIOLOGICAL_SEX_FEMALE";
+    }
+
+    return "";
+}
+
+const getFitnessTargetTranslationKey = (fitnessTarget: string) => {
+    const fitnessTargetEnum: FitnessTargetEnum | null = fromFitnessTargetName(fitnessTarget);
+
+    if(fitnessTargetEnum === FitnessTargetEnum.WEIGHT_GAIN) {
+        return "FITNESS_TARGET_WEIGHT_GAIN";
+    }
+
+    if(fitnessTargetEnum === FitnessTargetEnum.WEIGHT_LOSS) {
+        return "FITNESS_TARGET_WEIGHT_LOSS";
+    }
+
+    if(fitnessTargetEnum === FitnessTargetEnum.MAINTENANCE) {
+        return "FITNESS_TARGET_MAINTENANCE";
     }
 
     return "";
@@ -123,6 +142,11 @@ const ViewFitnessData = (
             <ReadonlyText 
                 label={translation("FITNESS_DATA_BIOLOGICAL_SEX_LABEL", { ns: "user_profile_screen_translations" })} 
                 text={translation(getBiologicalSexTranslationKey(fitnessData.biologicalSex))}/>
+
+            <ReadonlyText 
+                label={translation("FITNESS_DATA_FITNESS_TARGET_LABEL", { ns: "user_profile_screen_translations" })} 
+                text={translation(getFitnessTargetTranslationKey(fitnessData.fitnessTarget))}/>
+
             <ReadonlyText label={translation("FITNESS_DATA_AGE_LABEL", { ns: "user_profile_screen_translations" })} 
                 text={fitnessData.age.toString() + " " + 
                     translation("FITNESS_DATA_AGE_YEARS_LABEL", { ns: "user_profile_screen_translations" })}/>
@@ -136,6 +160,11 @@ const ViewFitnessData = (
             <ReadonlyText 
                 label={translation("FITNESS_DATA_RECOMMENDED_DAILY_KILOCALORIES_LABEL", { ns: "user_profile_screen_translations" })} 
                 text={fitnessData.dailyKilocaloriesObjective.toString() + " kcal"}/>
+
+            <ReadonlyText 
+                label={translation("FITNESS_DATA_RECOMMENDED_DAILY_KILOCALORIES_FOR_FITNESS_TARGET_LABEL", { ns: "user_profile_screen_translations" })} 
+                text={fitnessData.fitnessTargetRecommendedKilocalories.toString() + " kcal"}/>
+
             <ReadonlyText label={translation("FITNESS_DATA_RECOMMENDED_DAILY_STEPS_LABEL", { ns: "user_profile_screen_translations" })} 
                 text={fitnessData.recommendedDailySteps.toString()}/>
             <ReadonlyText 

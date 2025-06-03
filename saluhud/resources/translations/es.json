@@ -299,5 +299,8 @@
     "WEEK_DAY_FRIDAY": "Viernes",
     "WEEK_DAY_SATURDAY": "Sábado",
     "WEEK_DAY_SUNDAY": "Domingo",
-    "DELETE_BUTTON_TEXT": "Eliminar"
+    "DELETE_BUTTON_TEXT": "Eliminar",
+    "FITNESS_TARGET_WEIGHT_LOSS": "Pérdida de peso",
+    "FITNESS_TARGET_MAINTENANCE": "Mantenimiento de peso",
+    "FITNESS_TARGET_WEIGHT_GAIN": "Ganancia de peso"
 }

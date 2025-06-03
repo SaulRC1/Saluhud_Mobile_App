@@ -17,6 +17,7 @@ import { executePostRequest, getSaluhudUserFitnessData } from "@src/api/SaluhudM
 import LoadingModal from "../LoadingModal";
 import ApiInformationResponse from "@src/response/ApiInformationResponse";
 import { InformationModalVariant } from "../InformationModal";
+import { FitnessTargetEnum } from "@src/entity/FitnessTargetEnum";
 
 interface CreateFitnessDataModalProps
 {
@@ -48,11 +49,18 @@ export default function CreateFitnessDataModal({title, visible, setVisible, styl
     const [bodyFatWeight, setBodyFatWeight] = useState("");
     const [leanBodyMassWeight, setLeanBodyMassWeight] = useState("");
     const [biologicalSex, setBiologicalSex] = useState("");
+    const [fitnessTarget, setFitnessTarget] = useState("");
     const [activityFactor, setActivityFactor] = useState("");
 
     const biologicalSexData = [
         {label: t("BIOLOGICAL_SEX_MALE"), value: BiologicalSexEnum.MALE},
         {label: t("BIOLOGICAL_SEX_FEMALE"), value: BiologicalSexEnum.FEMALE},
+    ];
+
+    const fitnessTargetData = [
+        {label: t("FITNESS_TARGET_WEIGHT_LOSS"), value: FitnessTargetEnum.WEIGHT_LOSS},
+        {label: t("FITNESS_TARGET_MAINTENANCE"), value: FitnessTargetEnum.MAINTENANCE},
+        {label: t("FITNESS_TARGET_WEIGHT_GAIN"), value: FitnessTargetEnum.WEIGHT_GAIN},
     ];
 
     const activityFactorData = [
@@ -70,6 +78,7 @@ export default function CreateFitnessDataModal({title, visible, setVisible, styl
             setFitnessDataHeight(fitnessData.height.toFixed(2));
             setFitnessDataAge(fitnessData.age.toString());
             setBiologicalSex(fitnessData.biologicalSex);
+            setFitnessTarget(fitnessData.fitnessTarget);
             setActivityFactor(fitnessData.activityFactor.toString());
             setLeanBodyMassPercentage(fitnessData.bodyComposition.leanBodyMassPercentage.toFixed(2));
             setBodyFatPercentage(fitnessData.bodyComposition.bodyFatPercentage.toFixed(2));
@@ -97,6 +106,10 @@ export default function CreateFitnessDataModal({title, visible, setVisible, styl
                 <StandardDropdown label={t("FITNESS_DATA_BIOLOGICAL_SEX_LABEL", { ns: "user_profile_screen_translations" })}
                     data={biologicalSexData} mode={"modal"} value={biologicalSex} setValue={setBiologicalSex} 
                     placeholder={t("FITNESS_DATA_BIOLOGICAL_SEX_DROPDOWN_PLACEHOLDER", { ns: "user_profile_screen_translations" })} />
+                
+                <StandardDropdown label={t("FITNESS_DATA_FITNESS_TARGET_LABEL", { ns: "user_profile_screen_translations" })}
+                    data={fitnessTargetData} mode={"modal"} value={fitnessTarget} setValue={setFitnessTarget} 
+                    placeholder={t("FITNESS_DATA_FITNESS_TARGET_DROPDOWN_PLACEHOLDER", { ns: "user_profile_screen_translations" })} />
 
                 <StandardDropdown label={t("FITNESS_DATA_ACTIVITY_FACTOR_LABEL", { ns: "user_profile_screen_translations" })}
                     data={activityFactorData} mode={"modal"} value={activityFactor} setValue={setActivityFactor} 
@@ -128,7 +141,7 @@ export default function CreateFitnessDataModal({title, visible, setVisible, styl
         Number(bodyFatWeight), Number(leanBodyMassWeight));
 
         let saveFitnessDataDTO: SaveSaluhudUserFitnessDataDTO = new SaveSaluhudUserFitnessDataDTO(Number(fitnessDataWeight), 
-        Number(fitnessDataHeight), biologicalSex, Number(fitnessDataAge), Number(leanBodyMassPercentage), 
+        Number(fitnessDataHeight), biologicalSex, fitnessTarget, Number(fitnessDataAge), Number(leanBodyMassPercentage), 
         Number(bodyFatPercentage), Number(bodyFatWeight), Number(leanBodyMassWeight), Number(activityFactor));
 
         let customHeadersMap = new Map<string, string>();
@@ -149,7 +162,7 @@ export default function CreateFitnessDataModal({title, visible, setVisible, styl
             console.log(responseJSON);
         } catch (error) {
             console.log(error);
-            setInformationModalMessage(t("FITNESS_DATA_SAVING_GENERIC_ERROR_MESSAGE"));
+            setInformationModalMessage(t("FITNESS_DATA_SAVING_GENERIC_ERROR_MESSAGE", { ns: "user_profile_screen_translations" }));
             setInformationModalVariant(InformationModalVariant.ERROR);
         } finally {
             setInformationModalVisible(true);
