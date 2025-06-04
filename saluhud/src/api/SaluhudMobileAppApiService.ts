@@ -15,6 +15,8 @@ import RecipeNameAndIdDataDTO from "@src/dto/nutrition/RecipeNameAndIdDataDTO";
 import AddMenuDayToMenuDTO from "@src/dto/nutrition/AddMenuDayToMenuDTO";
 import AddRecipeToMenuDayDTO from "@src/dto/nutrition/AddRecipeToMenuDayDTO";
 import EditMenuDTO from "@src/dto/nutrition/EditMenuDTO";
+import RecipeCardDTO from "@src/dto/nutrition/RecipeCardDTO";
+import MenuDayRecipeDTO from "@src/dto/nutrition/MenuDayRecipeDTO";
 
 const getCommonApiHttpRequestHeaders = () => ({
   'Content-Type': 'application/json',
@@ -331,5 +333,50 @@ export const putSetMenuAsFavourite = async (customHeadersMap: Map<string, string
   );
 
   const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const getSaluhudUserFitnessDataDTO = async (
+  customHeadersMap: Map<string, string>,
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.saluhudUserFitnessDataEndpoint,
+  );
+
+  const fitnessData: SaluhudUserFitnessDataDTO = await response.json();
+
+  return fitnessData;
+};
+
+export const getRecipeRecommendations = async (
+  customHeadersMap: Map<string, string>,
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.recipeRecommendationsEndpoint,
+  );
+
+  const responseJSON: RecipeCardDTO[] = await response.json();
+
+  return responseJSON;
+};
+
+export const getNextFavouriteMenuRecipe = async (
+  customHeadersMap: Map<string, string>,
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.nextFavouriteMenuRecipe,
+  );
+
+  const responseJSON: MenuDayRecipeDTO = await response.json();
+
   return responseJSON;
 };

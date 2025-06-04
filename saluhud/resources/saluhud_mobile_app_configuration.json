@@ -19,5 +19,7 @@
     "removeMenuDayFromMenuEndpoint": "/saluhud-mobile-app/menu-data/remove-menu-day-from-menu/{menuId}/{menuDayId}",
     "removeMenuEndpoint": "/saluhud-mobile-app/menu-data/remove-menu/{menuId}",
     "editMenuEndpoint": "/saluhud-mobile-app/menu-data/edit-menu",
-    "setMenuAsFavouriteEndpoint": "/saluhud-mobile-app/menu-data/set-menu-as-favourite/{menuId}"
+    "setMenuAsFavouriteEndpoint": "/saluhud-mobile-app/menu-data/set-menu-as-favourite/{menuId}",
+    "recipeRecommendationsEndpoint": "/saluhud-mobile-app/recipe-data/recipe-recommendations",
+    "nextFavouriteMenuRecipe": "/saluhud-mobile-app/menu-data/next-favourite-menu-recipe"
 }

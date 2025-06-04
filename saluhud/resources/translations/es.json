@@ -302,5 +302,8 @@
     "DELETE_BUTTON_TEXT": "Eliminar",
     "FITNESS_TARGET_WEIGHT_LOSS": "Pérdida de peso",
     "FITNESS_TARGET_MAINTENANCE": "Mantenimiento de peso",
-    "FITNESS_TARGET_WEIGHT_GAIN": "Ganancia de peso"
+    "FITNESS_TARGET_WEIGHT_GAIN": "Ganancia de peso",
+    "ERROR_LOADING_RECIPE_RECOMMENDATIONS": "No se han podido cargar las recetas recomendadas, por favor inténtelo más tarde.",
+    "UPCOMING_FAVOURITE_MENU_RECIPE_TITLE": "Tu próxima receta",
+    "RECOMMENDED_RECIPES_TITLE": "Recetas recomendadas"
 }

@@ -131,6 +131,27 @@ const MenusScreenStackNavigator = () => {
   );
 }
 
+export type HomeScreenStackParamList = {
+  Home_Screen: undefined;
+  Home_Main_Screen: undefined;
+  Home_Recipe_Detail_Screen: { recipeID: bigint };
+}
+
+const HomeScreenStack = createStackNavigator();
+
+const HomeScreenStackNavigator = () => {
+  const { t } = useTranslation();
+
+  return(
+    <HomeScreenStack.Navigator>
+      <HomeScreenStack.Screen name={"Home_Main_Screen"} component={HomeScreen} 
+        options={{headerShown: false}}/>
+      <HomeScreenStack.Screen name={"Home_Recipe_Detail_Screen"} component={RecipeDetailScreen} 
+        options={{title: t("RECIPE_DETAIL_SCREEN_TITLE")}}/>
+    </HomeScreenStack.Navigator>
+  );
+}
+
 function App() {
 
   const { t } = useTranslation();
@@ -140,7 +161,8 @@ function App() {
       <Tab.Navigator>
         <Tab.Screen name="Log_In_Screen" component={LogInScreen} 
           options={{headerShown: false, tabBarButton: () => {return null;}, tabBarStyle: { display: "none" }, unmountOnBlur: true}}/>
-        <Tab.Screen name="Home_Screen" component={HomeScreen} 
+        
+        <Tab.Screen name="Home_Screen" component={HomeScreenStackNavigator} 
           options={{headerShown: false, tabBarShowLabel: false, 
           tabBarIcon: ({focused}) => {return homeScreenTabBarIcon(focused);}, unmountOnBlur: true}}/>
 
