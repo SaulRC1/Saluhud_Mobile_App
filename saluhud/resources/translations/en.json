@@ -305,5 +305,13 @@
     "FITNESS_TARGET_WEIGHT_GAIN": "Weight gain",
     "ERROR_LOADING_RECIPE_RECOMMENDATIONS": "Could not load recipe recommendations, please try again later.",
     "UPCOMING_FAVOURITE_MENU_RECIPE_TITLE": "Your next recipe",
-    "RECOMMENDED_RECIPES_TITLE": "Recommended recipes"
+    "RECOMMENDED_RECIPES_TITLE": "Recommended recipes",
+    "WEEK_DAY_MONDAY_SHORT": "Mon",
+    "WEEK_DAY_TUESDAY_SHORT": "Tue",
+    "WEEK_DAY_WEDNESDAY_SHORT": "Wed",
+    "WEEK_DAY_THURSDAY_SHORT": "Thu",
+    "WEEK_DAY_FRIDAY_SHORT": "Fri",
+    "WEEK_DAY_SATURDAY_SHORT": "Sat",
+    "WEEK_DAY_SUNDAY_SHORT": "Sun",
+    "WEEK": "Week"
 }

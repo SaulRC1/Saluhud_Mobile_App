@@ -305,5 +305,13 @@
     "FITNESS_TARGET_WEIGHT_GAIN": "Ganancia de peso",
     "ERROR_LOADING_RECIPE_RECOMMENDATIONS": "No se han podido cargar las recetas recomendadas, por favor inténtelo más tarde.",
     "UPCOMING_FAVOURITE_MENU_RECIPE_TITLE": "Tu próxima receta",
-    "RECOMMENDED_RECIPES_TITLE": "Recetas recomendadas"
+    "RECOMMENDED_RECIPES_TITLE": "Recetas recomendadas",
+    "WEEK_DAY_MONDAY_SHORT": "Lun",
+    "WEEK_DAY_TUESDAY_SHORT": "Mar",
+    "WEEK_DAY_WEDNESDAY_SHORT": "Mié",
+    "WEEK_DAY_THURSDAY_SHORT": "Jue",
+    "WEEK_DAY_FRIDAY_SHORT": "Vie",
+    "WEEK_DAY_SATURDAY_SHORT": "Sáb",
+    "WEEK_DAY_SUNDAY_SHORT": "Dom",
+    "WEEK": "Semana"
 }

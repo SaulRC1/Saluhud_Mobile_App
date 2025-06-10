@@ -13,6 +13,9 @@ import { useSaluhudMobileAppAuthenticationContext } from "@src/global/SaluhudMob
 import SaluhudMobileAppConfiguration from "@resources/saluhud_mobile_app_configuration.json";
 import SaluhudUserDTO from "@src/dto/user/SaluhudUserDTO";
 import InformationModal, { InformationModalVariant } from "@components/modal/InformationModal";
+import StepsIcon from "@resources/icons/steps-icon.svg";
+import WeightIcon from "@resources/icons/kg-measure-weight-icon.svg";
+import SleepIcon from "@resources/icons/snoring-icon.svg";
 
 type UserProfileScreenNavigationProp = StackNavigationProp<UserProfileScreenStackParamList, "User_Profile_Main_Screen">;
 
@@ -91,6 +94,21 @@ const UserProfileScreen = () => {
                 <MenuButton icon={SettingsIcon}
                     text={t("GENERAL_SETTINGS_TITLE", { ns: "user_profile_screen_translations" })}
                     style={userProfileScreenStyles.menuButton} onPress={() => {navigation.navigate("General_Settings_Screen");}}
+                />
+
+                <MenuButton icon={StepsIcon}
+                    text={t("DAILY_STEPS_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}
+                    style={userProfileScreenStyles.menuButton} onPress={() => {navigation.navigate("Steps_Historical_Screen");}}
+                />
+
+                <MenuButton icon={WeightIcon}
+                    text={t("WEIGHT_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}
+                    style={userProfileScreenStyles.menuButton} onPress={() => {navigation.navigate("Weight_Historical_Screen");}}
+                />
+
+                <MenuButton icon={SleepIcon}
+                    text={t("SLEEP_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}
+                    style={userProfileScreenStyles.menuButton} onPress={() => {navigation.navigate("Sleep_Historical_Screen");}}
                 />
             </>
         );

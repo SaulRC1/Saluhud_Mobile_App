@@ -17,6 +17,15 @@ import AddRecipeToMenuDayDTO from "@src/dto/nutrition/AddRecipeToMenuDayDTO";
 import EditMenuDTO from "@src/dto/nutrition/EditMenuDTO";
 import RecipeCardDTO from "@src/dto/nutrition/RecipeCardDTO";
 import MenuDayRecipeDTO from "@src/dto/nutrition/MenuDayRecipeDTO";
+import DailyStepsHistoricalEntryDTO from "@src/dto/user/DailyStepsHistoricalEntryDTO";
+import DailyStepsHistoricalDateRangeDTO from "@src/dto/user/DailyStepsHistoricalDateRangeDTO";
+import RegisterDailyStepsHistoricalEntryDTO from "@src/dto/user/RegisterDailyStepsHistoricalEntryDTO";
+import SleepHistoricalEntryDTO from "@src/dto/user/SleepHistoricalEntryDTO";
+import SleepHistoricalDateRangeDTO from "@src/dto/user/SleepHistoricalDateRangeDTO";
+import RegisterSleepHistoricalEntryDTO from "@src/dto/user/RegisterSleepHistoricalEntryDTO";
+import WeightHistoricalEntryDTO from "@src/dto/user/WeightHistoricalEntryDTO";
+import WeightHistoricalDateRangeDTO from "@src/dto/user/WeightHistoricalDateRangeDTO";
+import RegisterWeightHistoricalEntryDTO from "@src/dto/user/RegisterWeightHistoricalEntryDTO";
 
 const getCommonApiHttpRequestHeaders = () => ({
   'Content-Type': 'application/json',
@@ -377,6 +386,246 @@ export const getNextFavouriteMenuRecipe = async (
   );
 
   const responseJSON: MenuDayRecipeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getDailyStepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  startDate: string,
+  endDate: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.dailyStepsHistoricalEntriesEndpoint + "?startDate=" + startDate + "&endDate=" + endDate,
+  );
+
+  const responseJSON: DailyStepsHistoricalEntryDTO[] = await response.json();
+
+  return responseJSON;
+};
+
+export const getCurrentWeekDailyStepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.currentWeekDailyStepsHistoricalEntriesEndpoint,
+  );
+
+  const responseJSON: DailyStepsHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getWeekDailyStepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  moveWeek: number,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekDailyStepsHistoricalEntriesEndpoint + "?moveWeek=" + moveWeek 
+      + "&date=" + date,
+  );
+
+  const responseJSON: DailyStepsHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const postRegisterNewDailyStepsHistoricalEntry = async (customHeadersMap: Map<string, string>, 
+  newEntry: RegisterDailyStepsHistoricalEntryDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.registerNewDailyStepsHistoricalEntryEndpoint,
+      newEntry
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const getWeekDailyStepHistoricalEntriesByDate = async (
+  customHeadersMap: Map<string, string>,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekDailyStepsHistoricalEntriesByDateEndpoint + "?date=" + date,
+  );
+
+  const responseJSON: DailyStepsHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getSleepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  startDate: string,
+  endDate: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.sleepHistoricalEntriesEndpoint + "?startDate=" + startDate + "&endDate=" + endDate,
+  );
+
+  const responseJSON: SleepHistoricalEntryDTO[] = await response.json();
+
+  return responseJSON;
+};
+
+export const getCurrentWeekSleepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.currentWeekSleepHistoricalEntriesEndpoint,
+  );
+
+  const responseJSON: SleepHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getWeekSleepHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  moveWeek: number,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekSleepHistoricalEntriesEndpoint + "?moveWeek=" + moveWeek 
+      + "&date=" + date,
+  );
+
+  const responseJSON: SleepHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const postRegisterNewSleepHistoricalEntry = async (customHeadersMap: Map<string, string>, 
+  newEntry: RegisterSleepHistoricalEntryDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.registerNewSleepHistoricalEntryEndpoint,
+      newEntry
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const getWeekSleepHistoricalEntriesByDate = async (
+  customHeadersMap: Map<string, string>,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekSleepHistoricalEntriesByDateEndpoint + "?date=" + date,
+  );
+
+  const responseJSON: SleepHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getWeightHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  startDate: string,
+  endDate: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weightHistoricalEntriesEndpoint + "?startDate=" + startDate + "&endDate=" + endDate,
+  );
+
+  const responseJSON: WeightHistoricalEntryDTO[] = await response.json();
+
+  return responseJSON;
+};
+
+export const getCurrentWeekWeightHistoricalEntries = async (
+  customHeadersMap: Map<string, string>
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.currentWeekWeightHistoricalEntriesEndpoint,
+  );
+
+  const responseJSON: WeightHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const getWeekWeightHistoricalEntries = async (
+  customHeadersMap: Map<string, string>,
+  moveWeek: number,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekWeightHistoricalEntriesEndpoint + "?moveWeek=" + moveWeek 
+      + "&date=" + date,
+  );
+
+  const responseJSON: WeightHistoricalDateRangeDTO = await response.json();
+
+  return responseJSON;
+};
+
+export const postRegisterNewWeightHistoricalEntry = async (customHeadersMap: Map<string, string>, 
+  newEntry: RegisterWeightHistoricalEntryDTO) => {
+  const response = await executePostRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.registerNewWeightHistoricalEntryEndpoint,
+      newEntry
+  );
+
+  const responseJSON : ApiInformationResponse = await response.json();
+  return responseJSON;
+};
+
+export const getWeekWeightHistoricalEntriesByDate = async (
+  customHeadersMap: Map<string, string>,
+  date: string
+) => {
+  const response = await executeGetRequest(
+    customHeadersMap,
+    'http://' +
+      SaluhudMobileAppConfiguration.backendURL +
+      SaluhudMobileAppConfiguration.weekWeightHistoricalEntriesByDateEndpoint + "?date=" + date,
+  );
+
+  const responseJSON: WeightHistoricalDateRangeDTO = await response.json();
 
   return responseJSON;
 };

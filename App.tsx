@@ -20,6 +20,9 @@ import RecipeDetailScreen from '@screens/RecipeDetailScreen';
 import MenusScreen from '@screens/menu/MenusScreen';
 import MenuDetailScreen from '@screens/menu/MenuDetailScreen';
 import MenuDayDetailScreen from '@screens/menu/MenuDayDetailScreen';
+import StepsHistoricalScreen from '@screens/userprofile/StepsHistoricalScreen';
+import SleepHistoricalScreen from '@screens/userprofile/SleepHistoricalScreen';
+import WeightHistoricalScreen from '@screens/userprofile/WeightHistoricalScreen';
 
 export type RootTabParamList = {
   Log_In_Screen: undefined;
@@ -62,6 +65,9 @@ export type UserProfileScreenStackParamList = {
   User_Profile_Details_Screen: undefined;
   Fitness_Data_Profile_Screen: undefined;
   General_Settings_Screen: undefined;
+  Steps_Historical_Screen: undefined;
+  Weight_Historical_Screen: undefined;
+  Sleep_Historical_Screen: undefined;
 }
 
 const UserProfileScreenStack = createStackNavigator();
@@ -79,6 +85,12 @@ const UserProfileScreenStackNavigator = () => {
         options={{title: t("USER_PROFILE_TITLE", { ns: "user_profile_screen_translations" })}}/>
       <UserProfileScreenStack.Screen name={"General_Settings_Screen"} component={GeneralSettingsScreen} 
         options={{title: t("GENERAL_SETTINGS_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"Steps_Historical_Screen"} component={StepsHistoricalScreen} 
+        options={{title: t("DAILY_STEPS_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"Weight_Historical_Screen"} component={WeightHistoricalScreen} 
+        options={{title: t("WEIGHT_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}}/>
+      <UserProfileScreenStack.Screen name={"Sleep_Historical_Screen"} component={SleepHistoricalScreen} 
+        options={{title: t("SLEEP_HISTORICAL_TITLE", { ns: "user_profile_screen_translations" })}}/>
     </UserProfileScreenStack.Navigator>
   );
 }

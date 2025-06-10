@@ -21,5 +21,20 @@
     "editMenuEndpoint": "/saluhud-mobile-app/menu-data/edit-menu",
     "setMenuAsFavouriteEndpoint": "/saluhud-mobile-app/menu-data/set-menu-as-favourite/{menuId}",
     "recipeRecommendationsEndpoint": "/saluhud-mobile-app/recipe-data/recipe-recommendations",
-    "nextFavouriteMenuRecipe": "/saluhud-mobile-app/menu-data/next-favourite-menu-recipe"
+    "nextFavouriteMenuRecipe": "/saluhud-mobile-app/menu-data/next-favourite-menu-recipe",
+    "dailyStepsHistoricalEntriesEndpoint": "/saluhud-mobile-app/daily-steps-historical/entries",
+    "currentWeekDailyStepsHistoricalEntriesEndpoint": "/saluhud-mobile-app/daily-steps-historical/current-week-entries",
+    "weekDailyStepsHistoricalEntriesEndpoint": "/saluhud-mobile-app/daily-steps-historical/week-entries",
+    "weekDailyStepsHistoricalEntriesByDateEndpoint": "/saluhud-mobile-app/daily-steps-historical/week-entries-by-date",
+    "registerNewDailyStepsHistoricalEntryEndpoint": "/saluhud-mobile-app/daily-steps-historical/register-entry",
+    "sleepHistoricalEntriesEndpoint": "/saluhud-mobile-app/sleep-historical/entries",
+    "currentWeekSleepHistoricalEntriesEndpoint": "/saluhud-mobile-app/sleep-historical/current-week-entries",
+    "weekSleepHistoricalEntriesEndpoint": "/saluhud-mobile-app/sleep-historical/week-entries",
+    "registerNewSleepHistoricalEntryEndpoint": "/saluhud-mobile-app/sleep-historical/register-entry",
+    "weekSleepHistoricalEntriesByDateEndpoint": "/saluhud-mobile-app/sleep-historical/week-entries-by-date",
+    "weightHistoricalEntriesEndpoint": "/saluhud-mobile-app/weight-historical/entries",
+    "currentWeekWeightHistoricalEntriesEndpoint": "/saluhud-mobile-app/weight-historical/current-week-entries",
+    "weekWeightHistoricalEntriesEndpoint": "/saluhud-mobile-app/weight-historical/week-entries",
+    "registerNewWeightHistoricalEntryEndpoint": "/saluhud-mobile-app/weight-historical/register-entry",
+    "weekWeightHistoricalEntriesByDateEndpoint": "/saluhud-mobile-app/weight-historical/week-entries-by-date"
 }
